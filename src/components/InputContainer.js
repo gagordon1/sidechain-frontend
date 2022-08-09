@@ -10,3 +10,18 @@ export const InputContainer = styled.div`
     border-radius: 3px;
     align-items : center;
 `
+
+const TextInput = styled.input`
+    outline : none;
+    border : none;
+    padding-left : 10px;
+`
+
+
+export const TextInputStyled = (props) => {
+    return (
+        <InputContainer width={props.width}>
+            <TextInput type="text" placeholder={props.placeholder + "..."}/>
+        </InputContainer>
+    )
+}
