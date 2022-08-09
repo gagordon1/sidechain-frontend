@@ -11,3 +11,7 @@ export const Heading2 = styled.p`
     font-size : 20px;
     margin-top : 0px;
 `
+export const Heading3 = styled.b`
+    font-size : 20px;
+    margin-top : 0px;
+`
