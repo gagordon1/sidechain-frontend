@@ -2,8 +2,9 @@ import LogoImage from '../assets/logo512.png'
 import styled from 'styled-components'
 import { InputContainer } from './InputContainer'
 import ProfileIconImage from '../assets/profile_icon.png'
-import MetaMaskLogoImage from '../assets/metamask_logo.png'
+
 import { Heading1 } from './TextComponents'
+import MetaMaskComponent from './MetaMaskComponent'
 
 
 const Logo = styled.img`
@@ -37,16 +38,11 @@ const RightSide = styled.div`
     justify-content : space-between;
     align-items : center;
 `
-const MetaMaskLogo = styled.img`
-    height : 35px;
-    width : auto;
-    margin-left : 10px;
-    margin-right : 20px;
-`
+
+
+
 
 export default function Navbar(props){
-
-
 
     return(
         <NavbarContainer className="App-header">
@@ -56,9 +52,8 @@ export default function Navbar(props){
             </LogoContainer>
             <RightSide>
                 <ProfileIcon src={ProfileIconImage}/>
-                <InputContainer width={"200px"}>
-                    <MetaMaskLogo src={MetaMaskLogoImage}/>
-                    {"Connected"}
+                <InputContainer width={"200px"} height={"45px"}>
+                    <MetaMaskComponent/>
                 </InputContainer>
             </RightSide>
             

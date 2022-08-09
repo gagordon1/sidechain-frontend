@@ -27,7 +27,7 @@ const ProjectFilesIcon = styled.img`
 
 export const UploadImageFile = (props) =>{
     return (
-        <InputContainer style={verticalInputStyle}width={"300px"} height={"200px"}>
+        <InputContainer style={verticalInputStyle}width={"250px"} height={"250px"}>
             <DefaultImage src={DefaultImageIcon}/>
             <Heading2>Upload Image</Heading2>
         </InputContainer>
@@ -36,7 +36,7 @@ export const UploadImageFile = (props) =>{
  export const UploadMainFile = (props) =>{
 
     return (
-        <InputContainer style={verticalInputStyle} width={"300px"} height={"200px"}>
+        <InputContainer style={verticalInputStyle} width={"250px"} height={"150px"}>
             <ProjectFilesIcon src={WaveformIconImage}/>
             <Heading2>Upload Artwork</Heading2>
         </InputContainer>
@@ -46,7 +46,7 @@ export const UploadImageFile = (props) =>{
 export const UploadProjectFiles = (props) =>{
 
     return (
-        <InputContainer style={verticalInputStyle} width={"300px"} height={"200px"}>
+        <InputContainer style={verticalInputStyle} width={"250px"} height={"150px"}>
             <ProjectFilesIcon src={ProjectFilesIconImage}/>
             <Heading2>Upload Project Files</Heading2>
         </InputContainer>
