@@ -1,6 +1,8 @@
 import LogoImage from '../assets/logo512.png';
 import styled from 'styled-components'
-import InputContainer from './InputContainer';
+import { InputContainer } from './InputContainer';
+import ProfileIconImage from '../assets/profile_icon.png'
+import MetaMaskLogoImage from '../assets/metamask_logo.png'
 
 
 const Logo = styled.img`
@@ -12,12 +14,11 @@ const Logo = styled.img`
 
 const NavbarContainer = styled.header`
     display : flex;
+    margin : auto;
     margin-top : 10px;
-    width : 100%;
+    width : 95%;
     justify-content : space-between;
     align-items : center;
-    padding-left : 20px;
-    padding-right : 20px;
 `
 
 const LogoText = styled.h1`
@@ -30,7 +31,29 @@ const LogoContainer = styled.div`
     display : flex;
 `
 
-export default function Navbar(){
+const ProfileIcon = styled.img`
+    height : 30px;
+    width : auto;
+    margin-right : 20px;
+    &:hover{
+        cursor : pointer;
+    }
+`
+
+const RightSide = styled.div`
+    display : flex;
+    justify-content : space-between;
+    align-items : center;
+`
+
+const MetaMaskLogo = styled.img`
+    height : 35px;
+    width : auto;
+    margin-left : 10px;
+    margin-right : 20px;
+`
+
+export default function Navbar(props){
 
 
 
@@ -40,7 +63,14 @@ export default function Navbar(){
                 <Logo src={LogoImage}/>
                 <LogoText>Sidechain</LogoText> 
             </LogoContainer>
-            <InputContainer width={"200px"}/>
+            <RightSide>
+                <ProfileIcon src={ProfileIconImage}/>
+                <InputContainer width={"200px"}>
+                    <MetaMaskLogo src={MetaMaskLogoImage}/>
+                    {"Connected"}
+                </InputContainer>
+            </RightSide>
+            
         </NavbarContainer>
     )
 }
