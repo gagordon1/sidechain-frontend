@@ -7,7 +7,7 @@ export const InputContainer = styled.div`
     height : ${props => props.height};
     box-sizing: border-box;
     border: 1px solid ${colors.inputBorderColor};
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     align-items : center;
 `
