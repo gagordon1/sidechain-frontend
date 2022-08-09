@@ -39,9 +39,6 @@ const RightSide = styled.div`
     align-items : center;
 `
 
-
-
-
 export default function Navbar(props){
 
     return(
@@ -53,7 +50,9 @@ export default function Navbar(props){
             <RightSide>
                 <ProfileIcon src={ProfileIconImage}/>
                 <InputContainer width={"200px"} height={"45px"}>
-                    <MetaMaskComponent/>
+                    <MetaMaskComponent 
+                        account={props.account} 
+                        setAccount={props.setAccount}/>
                 </InputContainer>
             </RightSide>
             
