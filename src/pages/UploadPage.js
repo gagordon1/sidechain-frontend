@@ -2,13 +2,13 @@ import styled from "styled-components"
 import { TextInputStyled } from "../components/InputContainer"
 import { UploadMainFile, UploadProjectFiles, UploadImageFile } from "../components/MediaInput"
 import { Heading3 } from '../components/TextComponents'
-import SelectDownloadedStems from '../components/SelectDownloadedStems'
+import SelectDownloadedContent from '../components/SelectDownloadedContent'
 import {useState, useEffect} from 'react'
 
 const InputGrid = styled.div`
     display : grid;
     grid-template-columns : 1fr 1fr;
-    grid-gap : 40px;
+    grid-gap : 20px;
     justify-items : center;
     align-items : center;
     `
@@ -24,13 +24,13 @@ const UploadPageContainer = styled.div`
     margin-left : auto;
     margin-right : auto;
     flex-direction : column;
-    gap : 30px;
+    gap : 40px;
     text-align : left;
 `
 
 export default function UploadPage(){
 
-    const [downloadedStems, setDownloadedStems] = useState([])
+    const [downloadedContent, setDownloadedContent] = useState([])
 
 
     useEffect(()=>{
@@ -49,8 +49,8 @@ export default function UploadPage(){
                 <UploadMainFile/>
             <UploadProjectFiles/>
             </InputGrid>
-            <Heading3>Select Samples From Downloads</Heading3>
-            <SelectDownloadedStems stems={downloadedStems}/>
+            <Heading3>Select Remixed Content From Downloads</Heading3>
+            <SelectDownloadedContent downloadedContent={downloadedContent}/>
         </UploadPageContainer>
         
 
