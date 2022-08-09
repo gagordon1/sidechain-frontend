@@ -51,8 +51,10 @@ export default function Navbar(props){
                 <ProfileIcon src={ProfileIconImage}/>
                 <InputContainer width={"200px"} height={"45px"}>
                     <MetaMaskComponent 
-                        account={props.account} 
-                        setAccount={props.setAccount}/>
+                        account={props.account}
+                        setAccount={props.setAccount}
+                        setSigner={props.setSigner}
+                        />
                 </InputContainer>
             </RightSide>
             

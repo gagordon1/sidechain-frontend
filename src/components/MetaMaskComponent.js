@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import MetaMaskLogoImage from '../assets/metamask_logo.png'
 import styled from 'styled-components';
+const ethers = require('ethers');
 
 const MetaMaskLogo = styled.img`
     height : 35px;
@@ -26,7 +27,12 @@ export default function MetaMaskComponent(props){
             // res[0] for fetching a first wallet
             window.ethereum
             .request({ method: "eth_requestAccounts" })
-            .then((res) => props.setAccount(res[0]));
+            .then((res) => props.setAccount(res[0]))
+            .then(()=> {
+                const provider = new ethers.provider.Web3Provider(window.ethereum)
+                props.setSigner(provider.getSigner())
+            });
+
         } else {
             alert("install metamask extension!!");
         }

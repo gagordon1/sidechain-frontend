@@ -8,8 +8,6 @@ import {
 import styled from 'styled-components';
 import UploadPage from './pages/UploadPage'
 import Navbar from './components/Navbar';
-import { ethers } from "ethers";
-import { useWeb3React } from '@web3-react/core';
 import {useState, useEffect} from 'react'
 
 const RoutesContainer = styled.div`
@@ -17,32 +15,25 @@ const RoutesContainer = styled.div`
 `
 function App() {
 
-    
   const [account, setAccount] = useState("")
-  const context = useWeb3React();
-  const { library, active } = context;
-
   const [signer, setSigner] = useState();
-
-  useEffect(() => {
-    if (!library) {
-      setSigner(undefined);
-      return;
-    }
-
-    setSigner(library.getSigner());
-  }, [library]);
 
   return (
     
     <div className="App">
+      {account}
       <Navbar 
-        account={account} 
-        setAccount={setAccount}/>
+        account={account}
+        setAccount={setAccount}
+        setSigner={setSigner}/>
       <RoutesContainer>
         <Router className="Router">
           <Routes>
-            <Route path="/upload" element={<UploadPage/>}/>
+            <Route path="/upload" element={
+              <UploadPage
+                signer={signer}
+              />}
+            />
           </Routes>
         </Router>
       </RoutesContainer>
