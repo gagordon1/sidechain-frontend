@@ -4,7 +4,7 @@ import {colors} from '../Theme'
 export const InputContainer = styled.div`
     display : flex;
     width : ${props => props.width};
-    height : 45px;
+    height : ${props => props.height};
     box-sizing: border-box;
     border: 1px solid ${colors.inputBorderColor};
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
@@ -22,7 +22,7 @@ const TextInput = styled.input`
 
 export const TextInputStyled = (props) => {
     return (
-        <InputContainer width={props.width}>
+        <InputContainer width={props.width} height={props.height}>
             <TextInput type="text" placeholder={props.placeholder + "..."}/>
         </InputContainer>
     )

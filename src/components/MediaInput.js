@@ -1,26 +1,27 @@
-import styled from "styled-components"
-import {colors} from '../Theme'
 
-const UploadMediaFileContainer = styled.div`
-    width : 300px;
-    height : 200px;
-    background: ${colors.lightGray};
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 19px;
-`
+import { InputContainer } from "./InputContainer"
 
-export const UploadImageFile = () =>{
+export const UploadImageFile = (props) =>{
     return (
-        <UploadMediaFileContainer>
+        <InputContainer width={"300px"} height={"200px"}>
 
-        </UploadMediaFileContainer>
+        </InputContainer>
     )
 }
- export const UploadAudioFile = () =>{
+ export const UploadMainFile = (props) =>{
 
     return (
-        <UploadMediaFileContainer>
+        <InputContainer width={"300px"} height={"200px"}>
 
-        </UploadMediaFileContainer>
+        </InputContainer>
+    )
+}
+
+export const UploadProjectFiles = (props) =>{
+
+    return (
+        <InputContainer width={"300px"} height={"200px"}>
+
+        </InputContainer>
     )
 }
