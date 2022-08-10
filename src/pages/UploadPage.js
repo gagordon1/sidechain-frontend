@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { TextInputStyled } from "../components/InputContainer"
+import { TextInputStyled, LongTextInputStyled } from "../components/InputContainer"
 import { UploadMainFile, UploadProjectFiles, UploadImageFile} from "../components/MediaInput"
 import { Heading3 } from '../components/TextComponents'
 import SelectDownloadedContent from '../components/SelectDownloadedContent'
@@ -14,7 +14,7 @@ const InputGrid = styled.div`
     align-items : center;
     `
 const UploadPageTextInputContainer = styled.div`
-    height : 210px;
+    height : 160px;
     display : flex;
     flex-direction : column;
     justify-content : space-between
@@ -32,6 +32,26 @@ const UploadPageContainer = styled.div`
 export default function UploadPage(){
 
     const [downloadedContent, setDownloadedContent] = useState([])
+    const [formData, setFormData] = useState({
+        image : null,
+        description : null,
+        name : null,
+        project_files : null,
+        artwork : null,
+        REV : null,
+    })
+
+    const handleSubmit = () =>{
+
+    }
+
+    const handleFormDataChange =  (newValue, field) => {
+        const newData = {...formData}
+        newData[field] = newValue
+        setFormData(newData)
+        console.log(newData)
+    }
+    
 
 
     useEffect(()=>{
@@ -40,21 +60,23 @@ export default function UploadPage(){
     
     return (
         <UploadPageContainer>
-            <form action={UPLOAD_SIDECHAIN_ENDPOINT} method="post" encType="multipart/form-data">
+            <Heading3>Upload Metadata</Heading3>
+            <form onSubmit={handleSubmit}>
                 <InputGrid>
                     <UploadPageTextInputContainer>
-                        <TextInputStyled width={"250px"} height={"45px"} placeholder={"Title"}/>
-                        <TextInputStyled width={"250px"} height={"45px"} placeholder={"REV"}/>
-                        <TextInputStyled width={"250px"} height={"100px"} placeholder={"Description"}/>
+                        <TextInputStyled handleChange={(e) => handleFormDataChange(e.target.value, "name")} 
+                            width={"250px"} height={"45px"} placeholder={"Name"}/>
+                        <LongTextInputStyled handleChange={(e) => handleFormDataChange(e.target.value, "description")}
+                            width={"250px"} height={"100px"} placeholder={"Description"}/>
                     </UploadPageTextInputContainer>
-                    <UploadImageFile/>
-                    <UploadMainFile/>
-                    <UploadProjectFiles/>
+                    <UploadImageFile handleChange={handleFormDataChange}/>
+                    <UploadMainFile handleChange={handleFormDataChange}/>
+                    <UploadProjectFiles handleChange={handleFormDataChange}/>
                 </InputGrid>
-                <Heading3>Select Remixed Content From Downloads</Heading3>
-                <SelectDownloadedContent downloadedContent={downloadedContent}/>
                 <button type="submit">Submit</button>
             </form>
+            <Heading3>Select Remixed Content From Downloads</Heading3>
+            <SelectDownloadedContent downloadedContent={downloadedContent}/>
         </UploadPageContainer>
         
 

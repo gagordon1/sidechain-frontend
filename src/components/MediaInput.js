@@ -58,13 +58,11 @@ function Dropzone(props) {
                             <Heading2>{props.headingText}</Heading2>
                         </InputContainer>
                     }
-            
-            
         </div>
     )
 }
 
-export const UploadMainFile = ()=>{
+export const UploadMainFile = (props)=>{
     return (
         <Dropzone
             width="250px"
@@ -73,11 +71,12 @@ export const UploadMainFile = ()=>{
             headingText="Upload Artwork"
             filename="artwork"
             accept=".wav,.mp3,.aiff"
+            setFormData={props.setFormData}
         />
     )
 
 }
-export const UploadProjectFiles = ()=>{
+export const UploadProjectFiles = (props)=>{
     return (
         <Dropzone
             width="250px"
@@ -86,11 +85,12 @@ export const UploadProjectFiles = ()=>{
             headingText="Upload Project Files"
             filename="project_files"
             accept=".zip"
+            setFormData={props.setFormData}
         />
     )
     
 }
-export const UploadImageFile = ()=>{
+export const UploadImageFile = (props)=>{
 
     return (
         <Dropzone
@@ -100,6 +100,7 @@ export const UploadImageFile = ()=>{
             headingText="Upload Cover Image"
             filename="image"
             accept=".png,.jpg,.jpeg"
+            setFormData={props.setFormData}
         />
     )
     

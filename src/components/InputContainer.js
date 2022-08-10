@@ -19,11 +19,29 @@ const TextInput = styled.input`
     width : 100%;
 `
 
+const LongTextInput = styled.textarea`
+    outline : none;
+    border : none;
+    padding-left : 10px;
+    width : 100%;
+    height : 80%;
+    font-family : inherit;
+    resize : none;
+`
+
 
 export const TextInputStyled = (props) => {
     return (
         <InputContainer width={props.width} height={props.height}>
-            <TextInput type="text" name={props.placeholder} placeholder={props.placeholder + "..."}/>
+            <TextInput onChange={props.handleChange} type="text" name={props.placeholder} placeholder={props.placeholder + "..."}/>
+        </InputContainer>
+    )
+}
+
+export const LongTextInputStyled = (props) => {
+    return (
+        <InputContainer width={props.width} height={props.height}>
+            <LongTextInput onChange={props.handleChange} type="text" name={props.placeholder} placeholder={props.placeholder + "..."}/>
         </InputContainer>
     )
 }
