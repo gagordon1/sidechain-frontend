@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react'
 import MetaMaskLogoImage from '../assets/metamask_logo.png'
 import styled from 'styled-components';
 const ethers = require('ethers');

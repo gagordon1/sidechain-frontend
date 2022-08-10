@@ -23,7 +23,7 @@ const TextInput = styled.input`
 export const TextInputStyled = (props) => {
     return (
         <InputContainer width={props.width} height={props.height}>
-            <TextInput type="text" placeholder={props.placeholder + "..."}/>
+            <TextInput type="text" name={props.placeholder} placeholder={props.placeholder + "..."}/>
         </InputContainer>
     )
 }

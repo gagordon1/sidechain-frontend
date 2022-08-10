@@ -8,7 +8,7 @@ import {
 import styled from 'styled-components';
 import UploadPage from './pages/UploadPage'
 import Navbar from './components/Navbar';
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 const RoutesContainer = styled.div`
 
