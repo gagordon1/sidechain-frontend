@@ -5,6 +5,8 @@ import { Heading3 } from '../components/TextComponents'
 import SelectDownloadedContent from '../components/SelectDownloadedContent'
 import {useState, useRef} from 'react'
 import {UPLOAD_SIDECHAIN_ENDPOINT} from '../config.js'
+import SubmitButton from '../components/SubmitButton'
+import axios from "axios"
 
 const InputGrid = styled.div`
     display : grid;
@@ -12,6 +14,7 @@ const InputGrid = styled.div`
     grid-gap : 20px;
     justify-items : center;
     align-items : center;
+    width : 100%;
     `
 const UploadPageTextInputContainer = styled.div`
     height : 160px;
@@ -21,18 +24,20 @@ const UploadPageTextInputContainer = styled.div`
 `
 const UploadPageContainer = styled.div`
     display : flex; 
-    width : 700px;
+    width : 600px;
     margin-left : auto;
     margin-right : auto;
     flex-direction : column;
     gap : 40px;
     text-align : left;
 `
-const getValue= (name)=>{
-    console.log(name)
-    console.log(document.getElementById(name))
-    return document.getElementById(name).value
-}
+const MetadataInputContainer = styled.div`
+    display : flex;
+    align-items : center;
+    flex-direction : column;
+    gap : 20px;
+`
+
 export default function UploadPage(){
 
     const [downloadedContent, setDownloadedContent] = useState([])
@@ -51,14 +56,26 @@ export default function UploadPage(){
         formData.append("artwork", artwork)
         formData.append("project_files", projectFiles)
         formData.append("description", description)
-        console.log(formData)
+
+        const config = {     
+            headers: { 'content-type': 'multipart/form-data' }
+        }
+        
+        axios.post(UPLOAD_SIDECHAIN_ENDPOINT, formData, config)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
     }
 
     
     return (
         <UploadPageContainer>
             <Heading3>Upload Metadata</Heading3>
-            <div>
+            <MetadataInputContainer>
                 <InputGrid>
                     <UploadPageTextInputContainer>
                         <TextInputStyled width={"250px"} height={"45px"} 
@@ -70,8 +87,8 @@ export default function UploadPage(){
                     <UploadArtwork setFile={setArtwork}/>
                     <UploadProjectFiles setFile={setProjectFiles}/>
                 </InputGrid>
-                <button onClick={handleSubmit}>Submit</button>
-            </div>
+                <SubmitButton text={"Submit"} onClick={handleSubmit}/>
+            </MetadataInputContainer>
             <Heading3>Select Remixed Content From Downloads</Heading3>
             <SelectDownloadedContent downloadedContent={downloadedContent}/>
         </UploadPageContainer>

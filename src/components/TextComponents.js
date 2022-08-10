@@ -15,3 +15,7 @@ export const Heading3 = styled.b`
     font-size : 20px;
     margin-top : 0px;
 `
+
+export const ButtonText = styled.p`
+    font-size : 16px;
+`
