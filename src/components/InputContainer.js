@@ -33,7 +33,8 @@ const LongTextInput = styled.textarea`
 export const TextInputStyled = (props) => {
     return (
         <InputContainer width={props.width} height={props.height}>
-            <TextInput onChange={props.handleChange} type="text" name={props.placeholder} placeholder={props.placeholder + "..."}/>
+            <TextInput onChange={props.onChange} type="text" 
+                name={props.name} placeholder={props.placeholder + "..."}/>
         </InputContainer>
     )
 }
@@ -41,7 +42,8 @@ export const TextInputStyled = (props) => {
 export const LongTextInputStyled = (props) => {
     return (
         <InputContainer width={props.width} height={props.height}>
-            <LongTextInput onChange={props.handleChange} type="text" name={props.placeholder} placeholder={props.placeholder + "..."}/>
+            <LongTextInput onChange={props.onChange} type="text" 
+                name={props.name} placeholder={props.placeholder + "..."}/>
         </InputContainer>
     )
 }

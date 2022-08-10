@@ -31,38 +31,38 @@ function Dropzone(props) {
     const [acceptedImage, setAcceptedImage] = useState(false);
 
     const onDrop = useCallback(acceptedFiles => {
-    // Do something with the files
         if (acceptedFiles.length > 0){
             if(props.filename === "image"){
                 setAcceptedImage(URL.createObjectURL(acceptedFiles[0]))
             }
             else{
                 setAcceptedImage(AcceptedImageIndicator)
+                
             }
+            props.setFile(acceptedFiles[0])
         }
-    }, [props.filename])
-    const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+    }, [props.id])
+    
+    const {getRootProps, getInputProps} = useDropzone({onDrop})
 
     return (
         <div {...getRootProps()}>
-            <input accept={props.accept} name={props.filename} {...getInputProps()} />
-            
-                
-                    {(props.filename === "image" && acceptedImage)?
-                        <CoverImagePreview height={props.height} width={props.width} src={acceptedImage}/>
-                        :
-                        <InputContainer style={verticalInputStyle}width={props.width} height={props.height}>
-                            <DefaultImage src={(acceptedImage)?
-                            AcceptedImageIndicator :
-                            props.imageSource}/>
-                            <Heading2>{props.headingText}</Heading2>
-                        </InputContainer>
-                    }
+            <input accept={props.accept} {...getInputProps()} />
+            {(props.filename === "image" && acceptedImage)?
+                <CoverImagePreview height={props.height} width={props.width} src={acceptedImage}/>
+                :
+                <InputContainer style={verticalInputStyle}width={props.width} height={props.height}>
+                    <DefaultImage src={(acceptedImage)?
+                    AcceptedImageIndicator :
+                    props.imageSource}/>
+                    <Heading2>{props.headingText}</Heading2>
+                </InputContainer>
+            }
         </div>
     )
 }
 
-export const UploadMainFile = (props)=>{
+export const UploadArtwork = (props)=>{
     return (
         <Dropzone
             width="250px"
@@ -71,7 +71,7 @@ export const UploadMainFile = (props)=>{
             headingText="Upload Artwork"
             filename="artwork"
             accept=".wav,.mp3,.aiff"
-            setFormData={props.setFormData}
+            setFile={props.setFile}
         />
     )
 
@@ -85,7 +85,7 @@ export const UploadProjectFiles = (props)=>{
             headingText="Upload Project Files"
             filename="project_files"
             accept=".zip"
-            setFormData={props.setFormData}
+            setFile={props.setFile}
         />
     )
     
@@ -100,7 +100,7 @@ export const UploadImageFile = (props)=>{
             headingText="Upload Cover Image"
             filename="image"
             accept=".png,.jpg,.jpeg"
-            setFormData={props.setFormData}
+            setFile={props.setFile}
         />
     )
     
