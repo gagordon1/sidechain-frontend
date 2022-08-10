@@ -6,6 +6,7 @@ import SelectDownloadedContent from '../components/SelectDownloadedContent'
 import {useState, useRef} from 'react'
 import {UPLOAD_SIDECHAIN_ENDPOINT} from '../config.js'
 import SubmitButton from '../components/SubmitButton'
+import Loader from "../components/Loader"
 import axios from "axios"
 
 const InputGrid = styled.div`
@@ -35,18 +36,20 @@ const MetadataInputContainer = styled.div`
     display : flex;
     align-items : center;
     flex-direction : column;
-    gap : 20px;
+    gap : 40px;
 `
 
 export default function UploadPage(){
 
     const [downloadedContent, setDownloadedContent] = useState([])
 
-    const [projectFiles, setProjectFiles] = useState(null)
-    const [artwork, setArtwork] = useState(null)
-    const [image, setImage] = useState(null)
-    const [name, setName] = useState(null)
-    const [description, setDescription] = useState(null)
+    const [projectFiles, setProjectFiles] = useState("")
+    const [artwork, setArtwork] = useState("")
+    const [image, setImage] = useState("")
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
+    const [baseURI, setBaseURI] = useState("")
+    const [loading, setLoading] = useState(false)
 
 
     const handleSubmit = () =>{
@@ -60,38 +63,55 @@ export default function UploadPage(){
         const config = {     
             headers: { 'content-type': 'multipart/form-data' }
         }
-        
+        setLoading(true)
         axios.post(UPLOAD_SIDECHAIN_ENDPOINT, formData, config)
             .then(response => {
-                console.log(response);
+                setBaseURI(response.data)
+                console.log(response.data)
             })
             .catch(error => {
-                console.log(error);
-            });
+                alert("Error uploading metadata")
+            }).finally(()=> setLoading(false));
+    }
 
+    const DeployContract = () => {
+        return (
+            <div>
+                <Heading3>Select Remixed Content From Downloads</Heading3>
+                <SelectDownloadedContent downloadedContent={downloadedContent}/>    
+            </div>
+        )
     }
 
     
     return (
-        <UploadPageContainer>
-            <Heading3>Upload Metadata</Heading3>
-            <MetadataInputContainer>
-                <InputGrid>
-                    <UploadPageTextInputContainer>
-                        <TextInputStyled width={"250px"} height={"45px"} 
-                            onChange={(e) => setName(e.target.value)} placeholder={"Name"}/>
-                        <LongTextInputStyled width={"250px"} height={"100px"} 
-                            onChange={(e) => setDescription(e.target.value)} placeholder={"Description"}/>
-                    </UploadPageTextInputContainer>
-                    <UploadImageFile setFile={setImage}/>
-                    <UploadArtwork setFile={setArtwork}/>
-                    <UploadProjectFiles setFile={setProjectFiles}/>
-                </InputGrid>
-                <SubmitButton text={"Submit"} onClick={handleSubmit}/>
-            </MetadataInputContainer>
-            <Heading3>Select Remixed Content From Downloads</Heading3>
-            <SelectDownloadedContent downloadedContent={downloadedContent}/>
-        </UploadPageContainer>
+        <div>
+        {
+            loading? <Loader/> :
+            <UploadPageContainer>
+                {baseURI? 
+                    <DeployContract/> 
+                    :
+                    <MetadataInputContainer>
+                        <Heading3 style={{alignSelf : "start"}}>Upload Metadata</Heading3>
+                        <InputGrid>
+                            <UploadPageTextInputContainer>
+                                <TextInputStyled width={"250px"} height={"45px"} 
+                                    onChange={(e) => setName(e.target.value)} placeholder={"Name"}/>
+                                <LongTextInputStyled width={"250px"} height={"100px"} 
+                                    onChange={(e) => setDescription(e.target.value)} placeholder={"Description"}/>
+                            </UploadPageTextInputContainer>
+                            <UploadImageFile setFile={setImage}/>
+                            <UploadArtwork setFile={setArtwork}/>
+                            <UploadProjectFiles setFile={setProjectFiles}/>
+                        </InputGrid>
+                        <SubmitButton text={"Submit"} onClick={handleSubmit}/>
+                    </MetadataInputContainer>
+                }
+            </UploadPageContainer>
+        }
+        </div>
+        
         
 
     )

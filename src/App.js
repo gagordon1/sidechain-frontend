@@ -16,7 +16,7 @@ const RoutesContainer = styled.div`
 function App() {
 
   const [account, setAccount] = useState("")
-  const [signer, setSigner] = useState();
+  const [signer, setSigner] = useState()
 
   return (
     
