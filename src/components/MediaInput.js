@@ -15,8 +15,8 @@ const DefaultImage = styled.img`
     height : auto;
 `
 const verticalInputStyle = {
-    "flex-direction" : "column",
-    "justify-content" : "center"
+    "flexDirection" : "column",
+    "justifyContent" : "center"
 }
 
 const CoverImagePreview = styled.img`
