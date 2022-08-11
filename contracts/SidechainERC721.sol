@@ -15,18 +15,20 @@ import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol';
   uint16 public REV; // uint16 less than 100
   uint16 private MAX_OWNERSHIP_VALUE = 100;
   uint16 ancestorCount = 0;
+  string baseTokenURI;
 
 
   /**
    * Given a creator wallet address, parent contract address and the REV for
    * the work, create the contract
    */
-   constructor(address _creator, address[] memory _parents, uint16 _REV)
+   constructor(address _creator, address[] memory _parents, uint16 _REV, string memory _baseTokenURI)
     ERC721("Sidechain", "SDCN"){
     require(_REV <= MAX_OWNERSHIP_VALUE, "Maximum REV = 100.");
     parents = _parents;
     REV = _REV;
     creator = _creator;
+    baseTokenURI = _baseTokenURI;
     
     address[] memory ancestors = new address[](MAX_OWNERSHIP_VALUE); //largest size the array could conceivably be
     loadAncestors(ancestors, _parents);
@@ -64,6 +66,10 @@ import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol';
 
   function getREV() external view returns (uint16) {
   	return REV;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return baseTokenURI;
   }
 
   function copyrightPayment() external payable{

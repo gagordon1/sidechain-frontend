@@ -443,8 +443,8 @@
       ]
     },
     "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/contracts/SidechainERC721.sol": {
-      "lastModificationDate": 1660065751108,
-      "contentHash": "7010b33e5483943f2e7ce8a19089c8ae",
+      "lastModificationDate": 1660188448710,
+      "contentHash": "090a71e5ffa7abf4780273f053667377",
       "sourceName": "contracts/SidechainERC721.sol",
       "solcConfig": {
         "version": "0.8.9",

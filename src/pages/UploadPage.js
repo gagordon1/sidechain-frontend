@@ -5,6 +5,7 @@ import { Heading3 } from '../components/TextComponents'
 import SelectDownloadedContent from '../components/SelectDownloadedContent'
 import {useState} from 'react'
 import { uploadMetadata } from "../controllers/backendController"
+import { deploySidechainEth } from "../controllers/blockchainController"
 import SubmitButton from '../components/SubmitButton'
 import Loader from "../components/Loader"
 
@@ -29,13 +30,19 @@ const UploadPageContainer = styled.div`
     margin-right : auto;
     flex-direction : column;
     gap : 40px;
-    text-align : left;
 `
 const MetadataInputContainer = styled.div`
     display : flex;
     align-items : center;
     flex-direction : column;
     gap : 40px;
+`
+
+const DeployContractContainer = styled.div`
+    display : flex;
+    flex-direction : column;
+    gap : 40px;
+    align-items : center;
 `
 
 export default function UploadPage(props){
@@ -48,7 +55,8 @@ export default function UploadPage(props){
     const [baseURI, setBaseURI] = useState("")
     const [loading, setLoading] = useState(false)
     const [REV, setREV] = useState(0) //default is 0
-    const [creatorAddress, setCreatorAddress] = useState(props.account) //default is connected wallet
+    const [creatorAddress, setCreatorAddress] = useState("") //default is connected wallet
+    const [parents, setParents] = useState([])
 
     const getDownloadedContent = () =>{
         return []
@@ -70,19 +78,9 @@ export default function UploadPage(props){
         setLoading(false)
     }
 
-    const DeployContract = () => {
-        return (
-            <div>
-                <Heading3>Select Remixed Content From Downloads</Heading3>
-                <SelectDownloadedContent downloadedContent={getDownloadedContent()}/>    
-                <UploadPageTextInputContainer>
-                    <TextInputStyled width={"250px"} height={"45px"} 
-                        onChange={(e) => setName(e.target.value)} placeholder={"Name"}/>
-                    <LongTextInputStyled width={"250px"} height={"100px"} 
-                        onChange={(e) => setDescription(e.target.value)} placeholder={"Description"}/>
-                </UploadPageTextInputContainer>
-            </div>
-        )
+    const handleDeployContract = async () =>{
+        await deploySidechainEth(props.signer, REV, creatorAddress? creatorAddress :props.account, 
+            parents, baseURI)
     }
 
     
@@ -92,8 +90,19 @@ export default function UploadPage(props){
             loading? <Loader/> :
             <UploadPageContainer>
                 {baseURI? 
-                    <DeployContract/> 
+                    <DeployContractContainer>
+                        <Heading3 style={{"alignSelf" : "start"}}>Ownership Details</Heading3>
+                        <TextInputStyled width={"250px"} height={"45px"} 
+                            onChange={(e) => setREV(e.target.value)} placeholder={"REV"}/>
+                        <TextInputStyled width={"250px"} height={"45px"} 
+                            onChange={(e) => setCreatorAddress(e.target.value)} placeholder={"Creator Address"}/>
+                        <Heading3 style={{"alignSelf" : "start"}}>Select Remixed Content From Downloads</Heading3>
+                        <SelectDownloadedContent setParents={setParents} downloadedContent={getDownloadedContent()}/>  
+                        <SubmitButton text={"Deploy Contract"} onClick={handleDeployContract}/>
+                    </DeployContractContainer>
+
                     :
+
                     <MetadataInputContainer>
                         <Heading3 style={{alignSelf : "start"}}>Upload Metadata</Heading3>
                         <InputGrid>
