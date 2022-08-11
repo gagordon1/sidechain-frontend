@@ -1,5 +1,6 @@
 import MetaMaskLogoImage from '../assets/metamask_logo.png'
 import styled from 'styled-components'
+import {getProvider} from '../controllers/blockchainController'
 
 const MetaMaskLogo = styled.img`
     height : 35px;
@@ -21,9 +22,9 @@ export default function MetaMaskComponent(props){
     
     const btnhandler = () => {
         // Asking if metamask is already present or not
-        if (props.provider) {
+        if (getProvider()) {
             // res[0] for fetching a first wallet
-            props.provider
+            getProvider()
             .request({ method: "eth_requestAccounts" })
             .then((res) => props.setAccount(res[0]))
 

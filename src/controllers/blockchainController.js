@@ -1,7 +1,7 @@
 import axios from 'axios';
 const ethers = require('ethers');
 
-const getProvider = () =>{
+export const getProvider = () =>{
     return window.ethereum.providers.find((provider) => provider.isMetaMask)
 }
 
@@ -44,6 +44,31 @@ export async function getMetadata(contractAddress){
     const metadataEndpoint = await getMetadataEndpoint(contractAddress)
     const metadata = await axios.get(metadataEndpoint)
     return metadata.data
+}
+
+
+/**
+ * Gets REV, parents and creator from contract
+ * @param string contractAddress 
+ * @returns object of form {
+ *    rev : int
+ *    parents : string[]
+ *    creator : string
+ * }
+ */
+export async function getOnChainData(contractAddress){
+    var json = require('../SidechainERC721.json'); 
+    const abi = json["abi"]
+    const wrappedProvider = new ethers.providers.Web3Provider(getProvider())
+    let contract = new ethers.Contract(contractAddress, abi, wrappedProvider);
+    const rev = await contract.getREV()
+    const parents = await contract.getParents()
+    const creator = await contract.getCreator()
+    return {
+        rev : rev,
+        parents : parents,
+        creator : creator
+    }
 }
 
     

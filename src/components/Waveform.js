@@ -8,37 +8,18 @@ export const WaveformContainer = styled.div`
   display: flex;  
   flex-direction: row;  
   align-items: center;
-  justify-content: center;
-  height: 100px;  width: 100%;
+  height: 100%;  width: 100%;
   background: transparent;
 `;
 
 export const Wave = styled.div`
-  width: 500px;
-  height: 90px;
-`;
-
-export const PlayButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  background: #EFEFEF;
-  border-radius: 50%;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding-bottom: 3px;
-  &:hover {
-    background: #DDD;
-  }
+  width: 600px;
+  height: 180px;
+  align-items : center;
+  justify-content : center;
 `;
 
 class Waveform extends Component {  
-  state = {
-    playing: false,
-  };
 
   componentDidMount() {
     if(this.waveform){
@@ -51,7 +32,7 @@ class Waveform extends Component {
       cursorWidth: 1,
       container: '#waveform',
       backend: 'WebAudio',
-      height: 80,
+      height: 180,
       progressColor: colors.black,
       responsive: true,
       waveColor: colors.lightGray,
@@ -60,19 +41,19 @@ class Waveform extends Component {
 
     this.waveform.load(track);
   };
-  
-  handlePlay = () => {
-    this.setState({ playing: !this.state.playing });
-    this.waveform.playPause();
-  };
+
+  componentWillReceiveProps (newProps) {
+    if( newProps.playing){
+      this.waveform.play()
+    }else{
+      this.waveform.pause()
+    }
+  }
   
   render() {
 
     return (
       <WaveformContainer>
-        <PlayButton onClick={this.handlePlay} >
-          {!this.state.playing ? 'Play' : 'Pause'}
-        </PlayButton>
         <Wave id="waveform" />
         <audio id="track" src={this.props.src } />
       </WaveformContainer>
