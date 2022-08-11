@@ -39,10 +39,9 @@ function Dropzone(props) {
                 setAcceptedImage(AcceptedImageIndicator)
                 
             }
-            console.log(acceptedFiles[0])
             props.setFile(acceptedFiles[0])
         }
-    }, [props.id])
+    }, [props])
     
     const {getRootProps, getInputProps} = useDropzone({onDrop})
 

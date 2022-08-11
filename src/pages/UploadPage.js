@@ -3,11 +3,10 @@ import { TextInputStyled, LongTextInputStyled } from "../components/InputContain
 import { UploadArtwork, UploadProjectFiles, UploadImageFile} from "../components/MediaInput"
 import { Heading3 } from '../components/TextComponents'
 import SelectDownloadedContent from '../components/SelectDownloadedContent'
-import {useState, useRef} from 'react'
-import {UPLOAD_SIDECHAIN_ENDPOINT} from '../config.js'
+import {useState} from 'react'
+import { uploadMetadata } from "../controllers/backendController"
 import SubmitButton from '../components/SubmitButton'
 import Loader from "../components/Loader"
-import axios from "axios"
 
 const InputGrid = styled.div`
     display : grid;
@@ -39,9 +38,7 @@ const MetadataInputContainer = styled.div`
     gap : 40px;
 `
 
-export default function UploadPage(){
-
-    const [downloadedContent, setDownloadedContent] = useState([])
+export default function UploadPage(props){
 
     const [projectFiles, setProjectFiles] = useState("")
     const [artwork, setArtwork] = useState("")
@@ -51,8 +48,12 @@ export default function UploadPage(){
     const [baseURI, setBaseURI] = useState("")
     const [loading, setLoading] = useState(false)
 
+    const getDownloadedContent = () =>{
+        return []
+    }
 
-    const handleSubmit = () =>{
+
+    const handleMetadataSubmit = async () =>{
         const formData = new FormData()
         formData.append("image", image)
         formData.append("name", name)
@@ -60,25 +61,18 @@ export default function UploadPage(){
         formData.append("project_files", projectFiles)
         formData.append("description", description)
 
-        const config = {     
-            headers: { 'content-type': 'multipart/form-data' }
-        }
+        
         setLoading(true)
-        axios.post(UPLOAD_SIDECHAIN_ENDPOINT, formData, config)
-            .then(response => {
-                setBaseURI(response.data)
-                console.log(response.data)
-            })
-            .catch(error => {
-                alert("Error uploading metadata")
-            }).finally(()=> setLoading(false));
+        const uri = await uploadMetadata(formData)
+        setBaseURI(uri)
+        setLoading(false)
     }
 
     const DeployContract = () => {
         return (
             <div>
                 <Heading3>Select Remixed Content From Downloads</Heading3>
-                <SelectDownloadedContent downloadedContent={downloadedContent}/>    
+                <SelectDownloadedContent downloadedContent={getDownloadedContent()}/>    
             </div>
         )
     }
@@ -105,7 +99,7 @@ export default function UploadPage(){
                             <UploadArtwork setFile={setArtwork}/>
                             <UploadProjectFiles setFile={setProjectFiles}/>
                         </InputGrid>
-                        <SubmitButton text={"Submit"} onClick={handleSubmit}/>
+                        <SubmitButton text={"Submit"} onClick={handleMetadataSubmit}/>
                     </MetadataInputContainer>
                 }
             </UploadPageContainer>
