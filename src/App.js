@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import styled from 'styled-components';
 import UploadPage from './pages/UploadPage'
+import ArtworkPage from './pages/ArtworkPage';
 import Navbar from './components/Navbar';
 import { Heading3 } from './components/TextComponents';
 import {useState} from 'react'
@@ -30,6 +31,7 @@ function App() {
       <RoutesContainer>
         <Router className="Router">
           <Routes>
+            <Route path="/artwork/:contractAddress" element={<ArtworkPage/>}/>
             <Route path="/upload" element={
               <div>
                 {

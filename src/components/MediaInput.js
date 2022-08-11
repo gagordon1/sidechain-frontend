@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { Heading2 } from './TextComponents'
 import React, {useCallback, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
+import { CoverImage } from "../components/Images"
 
 const DefaultImage = styled.img`
     margin-left : auto;
@@ -19,10 +20,6 @@ const verticalInputStyle = {
     "justifyContent" : "center"
 }
 
-const CoverImagePreview = styled.img`
-    max-width: ${props=>props.width};
-    max-height: ${props=>props.height};
-`
 
 
 
@@ -49,7 +46,7 @@ function Dropzone(props) {
         <div {...getRootProps()}>
             <input accept={props.accept} {...getInputProps()} />
             {(props.filename === "image" && acceptedImage)?
-                <CoverImagePreview height={props.height} width={props.width} src={acceptedImage}/>
+                <CoverImage height={props.height} width={props.width} src={acceptedImage}/>
                 :
                 <InputContainer style={verticalInputStyle}width={props.width} height={props.height}>
                     <DefaultImage src={(acceptedImage)?

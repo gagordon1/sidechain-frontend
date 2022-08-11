@@ -10,6 +10,7 @@ import SubmitButton from '../components/SubmitButton'
 import Loader from "../components/Loader"
 import { useNavigate } from "react-router-dom";
 
+
 const InputGrid = styled.div`
     display : grid;
     grid-template-columns : 1fr 1fr;
