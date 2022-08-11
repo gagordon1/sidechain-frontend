@@ -24,12 +24,13 @@ export default function MetaMaskComponent(props){
         // Asking if metamask is already present or not
         if (window.ethereum) {
             // res[0] for fetching a first wallet
-            window.ethereum
+            const provider = window.ethereum.providers.find((provider) => provider.isMetaMask)
+            const wrapped = new ethers.providers.Web3Provider(provider)
+            provider
             .request({ method: "eth_requestAccounts" })
             .then((res) => props.setAccount(res[0]))
             .then(()=> {
-                const provider = new ethers.provider.Web3Provider(window.ethereum)
-                props.setSigner(provider.getSigner())
+                props.setSigner(wrapped.getSigner())
             });
 
         } else {

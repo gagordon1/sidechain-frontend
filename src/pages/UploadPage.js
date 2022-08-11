@@ -47,6 +47,8 @@ export default function UploadPage(props){
     const [description, setDescription] = useState("")
     const [baseURI, setBaseURI] = useState("")
     const [loading, setLoading] = useState(false)
+    const [REV, setREV] = useState(0) //default is 0
+    const [creatorAddress, setCreatorAddress] = useState(props.account) //default is connected wallet
 
     const getDownloadedContent = () =>{
         return []
@@ -73,6 +75,12 @@ export default function UploadPage(props){
             <div>
                 <Heading3>Select Remixed Content From Downloads</Heading3>
                 <SelectDownloadedContent downloadedContent={getDownloadedContent()}/>    
+                <UploadPageTextInputContainer>
+                    <TextInputStyled width={"250px"} height={"45px"} 
+                        onChange={(e) => setName(e.target.value)} placeholder={"Name"}/>
+                    <LongTextInputStyled width={"250px"} height={"100px"} 
+                        onChange={(e) => setDescription(e.target.value)} placeholder={"Description"}/>
+                </UploadPageTextInputContainer>
             </div>
         )
     }
