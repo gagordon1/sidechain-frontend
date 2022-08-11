@@ -16,6 +16,7 @@ export const Heading3 = styled.b`
     margin-top : 0px;
 `
 
-export const ButtonText = styled.p`
+export const ButtonText = styled.b`
     font-size : 16px;
+    color : ${colors.grayText};
 `

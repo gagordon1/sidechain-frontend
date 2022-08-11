@@ -17,9 +17,6 @@ export async function uploadMetadata(formData){
         headers: { 'content-type': 'multipart/form-data' }
     }
     const response = await axios.post(UPLOAD_SIDECHAIN_ENDPOINT, formData, config)
-                            .catch(error => {
-                                alert("Error uploading metadata")
-                            })
     return response.data
 
 }

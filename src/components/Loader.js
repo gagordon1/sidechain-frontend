@@ -1,5 +1,6 @@
 import LoadingIcon from '../assets/logo512.png';
 import styled, {keyframes} from 'styled-components';
+import { Heading3 } from './TextComponents';
 const orbit = keyframes`
     from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
     to   { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
@@ -11,7 +12,7 @@ const orbit2 = keyframes`
 `
 
 const Loader1 = styled.img`
-    position: absolute;
+    position : absolute;
     margin-top: 150px;
     margin-left: auto;
     margin-right: auto;
@@ -22,7 +23,7 @@ const Loader1 = styled.img`
     animation:1s ${orbit} infinite linear;
 `
 const Loader2 = styled.img`
-    position: absolute;
+    position : absolute;
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -32,12 +33,22 @@ const Loader2 = styled.img`
     height: auto;
     animation:1s ${orbit2} infinite linear;
 `
+const LoaderContainer = styled.div`
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    gap : 350px;
+`
       
-export default function Loader(){
+export default function Loader(props){
   return (
-    <div>
-      <Loader1 alt="loader" src={LoadingIcon}/>
-      <Loader2 alt="loader" src={LoadingIcon}/>
-    </div>
+    <LoaderContainer>
+        <div>
+            <Loader1 alt="loader" src={LoadingIcon}/>
+            <Loader2 alt="loader" src={LoadingIcon}/>
+            
+        </div>
+        <Heading3>{props.message}</Heading3>
+    </LoaderContainer>
   )
 }

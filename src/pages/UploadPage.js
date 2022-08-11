@@ -8,6 +8,7 @@ import { uploadMetadata } from "../controllers/backendController"
 import { deploySidechainEth } from "../controllers/blockchainController"
 import SubmitButton from '../components/SubmitButton'
 import Loader from "../components/Loader"
+import { useNavigate } from "react-router-dom";
 
 const InputGrid = styled.div`
     display : grid;
@@ -53,10 +54,11 @@ export default function UploadPage(props){
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [baseURI, setBaseURI] = useState("")
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState("")
     const [REV, setREV] = useState(0) //default is 0
     const [creatorAddress, setCreatorAddress] = useState("") //default is connected wallet
     const [parents, setParents] = useState([])
+    const navigate = useNavigate()
 
     const getDownloadedContent = () =>{
         return []
@@ -71,23 +73,42 @@ export default function UploadPage(props){
         formData.append("project_files", projectFiles)
         formData.append("description", description)
 
+
         
-        setLoading(true)
-        const uri = await uploadMetadata(formData)
-        setBaseURI(uri)
-        setLoading(false)
+        setLoading("Uploading Metadata...")
+        try {
+            const uri = await uploadMetadata(formData)
+            setBaseURI(uri)
+        } catch (error) {
+            console.log(error)
+            alert("Error uploading metadata.")
+        }
+        
+        setLoading("")
     }
 
     const handleDeployContract = async () =>{
-        await deploySidechainEth(props.signer, REV, creatorAddress? creatorAddress :props.account, 
-            parents, baseURI)
+        setLoading("Deploying Contract...")
+        try {
+            const address = await deploySidechainEth(props.signer, REV, creatorAddress? creatorAddress :props.account, 
+                parents, baseURI)
+            setLoading("")
+            navigate("/artwork/" + address)
+
+        } catch (error) {
+            console.log(error) 
+            alert("error deploying contract to network")  
+        }
+        
+        setLoading("")
+        
     }
 
     
     return (
         <div>
         {
-            loading? <Loader/> :
+            loading? <Loader message={loading}/> :
             <UploadPageContainer>
                 {baseURI? 
                     <DeployContractContainer>
@@ -116,7 +137,7 @@ export default function UploadPage(props){
                             <UploadArtwork setFile={setArtwork}/>
                             <UploadProjectFiles setFile={setProjectFiles}/>
                         </InputGrid>
-                        <SubmitButton text={"Submit"} onClick={handleMetadataSubmit}/>
+                        <SubmitButton text={"Proceed to Deployment"} onClick={handleMetadataSubmit}/>
                     </MetadataInputContainer>
                 }
             </UploadPageContainer>
