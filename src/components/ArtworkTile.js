@@ -23,6 +23,22 @@ const TrackInfo = styled.div`
     gap : 3px;
 `
 
+const renderTimeDelta = (timestamp) => {
+    var diff =  Date.now() / 1000 - timestamp;
+    var years = (diff / ((60 * 60 * 24 * 365)))
+    var days = (diff / (60 * 60 * 24));
+    var hours = (diff / (60 * 60));
+    var minutes = (diff / (60));
+    for (const val of [[years, "y"], [days, "d"], [hours, "h"], [minutes, "m"]]){
+        let num = val[0]
+        let char = val[1]
+        if (num >=1){
+            return Math.round(num).toString() + char
+        }
+    }
+    return "<1m"
+}
+
 export default function ArtworkTile(props){
 
     return (
@@ -34,10 +50,10 @@ export default function ArtworkTile(props){
             </ImageAndPlayPauseStyled>
             {props.data.audioLink? <Waveform playing={props.playing} src={props.data.audioLink}/> : null}
             <TrackInfo>
-                <InfoText2>Title</InfoText2>
+                {props.data.name? <InfoText2>{props.data.name}</InfoText2> : null}
                 <InfoText2>{props.data.creator}</InfoText2>
-                <InfoText2>{props.data.rev}</InfoText2>
-                <InfoText2>Timestamp</InfoText2>
+                <InfoText2>{props.data.rev} REV</InfoText2>
+                <InfoText2>{renderTimeDelta(props.data.timestamp)}</InfoText2>
             </TrackInfo>
         </TrackContentContainer>
     )

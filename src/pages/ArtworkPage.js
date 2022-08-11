@@ -4,6 +4,7 @@ import styled from "styled-components"
 import ArtworkTile from '../components/ArtworkTile'
 import Loader from '../components/Loader'
 import { getMetadata, getOnChainData } from "../controllers/blockchainController"
+import { Heading3 } from '../components/TextComponents'
 
 
 
@@ -12,6 +13,7 @@ const ArtworkPageContainer = styled.div`
     display : flex;
     flex-direction : column;
     align-items : center;
+    gap : 50px;
 `
 
 export default function ArtworkPage(props){
@@ -31,7 +33,9 @@ export default function ArtworkPage(props){
                     imageLink : metadata.image,
                     audioLink : metadata.asset_specific_data.artwork,
                     creator : onChainData.creator,
-                    rev : onChainData.rev
+                    rev : onChainData.rev,
+                    timestamp : metadata.asset_specific_data.timestamp,
+                    name : metadata.name
                 }
                 setData(data)
                 
@@ -47,8 +51,11 @@ export default function ArtworkPage(props){
 
     return(
         <div>
+
             {loading? <Loader message={loading}/> :
+                
                 <ArtworkPageContainer>
+                    <Heading3>Ownership Contract: {contractAddress}</Heading3>
                     {data? <ArtworkTile playing={playing} setPlaying={setPlaying}
                         data={data}/> : null}
                     {/* <ParentWorks/> */}
