@@ -91,7 +91,7 @@ export default function UploadPage(props){
     const handleDeployContract = async () =>{
         setLoading("Deploying Contract...")
         try {
-            const address = await deploySidechainEth(props.signer, REV, creatorAddress? creatorAddress :props.account, 
+            const address = await deploySidechainEth(props.provider, REV, creatorAddress? creatorAddress :props.account, 
                 parents, baseURI)
             setLoading("")
             navigate("/artwork/" + address)

@@ -53,7 +53,7 @@ export default function Navbar(props){
                     <MetaMaskComponent 
                         account={props.account}
                         setAccount={props.setAccount}
-                        setSigner={props.setSigner}
+                        provider={props.provider}
                         />
                 </InputContainer>
             </RightSide>

@@ -1,6 +1,5 @@
 import MetaMaskLogoImage from '../assets/metamask_logo.png'
-import styled from 'styled-components';
-const ethers = require('ethers');
+import styled from 'styled-components'
 
 const MetaMaskLogo = styled.img`
     height : 35px;
@@ -22,16 +21,11 @@ export default function MetaMaskComponent(props){
     
     const btnhandler = () => {
         // Asking if metamask is already present or not
-        if (window.ethereum) {
+        if (props.provider) {
             // res[0] for fetching a first wallet
-            const provider = window.ethereum.providers.find((provider) => provider.isMetaMask)
-            const wrapped = new ethers.providers.Web3Provider(provider)
-            provider
+            props.provider
             .request({ method: "eth_requestAccounts" })
             .then((res) => props.setAccount(res[0]))
-            .then(()=> {
-                props.setSigner(wrapped.getSigner())
-            });
 
         } else {
             alert("install metamask extension!!");

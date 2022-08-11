@@ -1,5 +1,5 @@
 import axios from "axios";
-import {UPLOAD_SIDECHAIN_ENDPOINT} from '../config.js'
+import {SIDECHAIN_UPLOAD_ENDPOINT} from '../config.js'
 
 /**
  * Uploads metadata from a formData object to the backend server
@@ -16,7 +16,7 @@ export async function uploadMetadata(formData){
     const config = {     
         headers: { 'content-type': 'multipart/form-data' }
     }
-    const response = await axios.post(UPLOAD_SIDECHAIN_ENDPOINT, formData, config)
+    const response = await axios.post(SIDECHAIN_UPLOAD_ENDPOINT, formData, config)
     return response.data
 
 }

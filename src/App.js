@@ -10,7 +10,7 @@ import UploadPage from './pages/UploadPage'
 import ArtworkPage from './pages/ArtworkPage';
 import Navbar from './components/Navbar';
 import { Heading3 } from './components/TextComponents';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 const RoutesContainer = styled.div`
 
@@ -18,26 +18,31 @@ const RoutesContainer = styled.div`
 function App() {
 
   const [account, setAccount] = useState("")
-  const [signer, setSigner] = useState()
+  const [provider, setProvider] = useState()
 
+
+  useEffect(() =>{
+    const prov = window.ethereum.providers.find((provider) => provider.isMetaMask)
+    setProvider(prov)
+  }, [])
   return (
     
     <div className="App">
       {account}
       <Navbar 
+        provider={provider}
         account={account}
-        setAccount={setAccount}
-        setSigner={setSigner}/>
+        setAccount={setAccount}/>
       <RoutesContainer>
         <Router className="Router">
           <Routes>
-            <Route path="/artwork/:contractAddress" element={<ArtworkPage/>}/>
+            <Route path="/artwork/:contractAddress" element={<ArtworkPage provider={provider}/>}/>
             <Route path="/upload" element={
               <div>
                 {
                 account? <UploadPage
                   account={account}
-                  signer={signer}
+                  provider={provider}
                 />
                 :
                 <Heading3>Connect wallet to upload to sidechain</Heading3>
