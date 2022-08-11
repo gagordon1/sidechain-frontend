@@ -5,7 +5,7 @@ import { Heading3 } from '../components/TextComponents'
 import SelectDownloadedContent from '../components/SelectDownloadedContent'
 import {useState} from 'react'
 import { uploadMetadata } from "../controllers/backendController"
-import { deploySidechainEth } from "../controllers/blockchainController"
+import { deploySidechainEth} from "../controllers/blockchainController"
 import SubmitButton from '../components/SubmitButton'
 import Loader from "../components/Loader"
 import { useNavigate } from "react-router-dom";
@@ -91,7 +91,7 @@ export default function UploadPage(props){
     const handleDeployContract = async () =>{
         setLoading("Deploying Contract...")
         try {
-            const address = await deploySidechainEth(props.provider, REV, creatorAddress? creatorAddress :props.account, 
+            const address = await deploySidechainEth(REV, creatorAddress? creatorAddress :props.account, 
                 parents, baseURI)
             setLoading("")
             navigate("/artwork/" + address)

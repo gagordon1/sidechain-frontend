@@ -6,7 +6,6 @@ export const CoverImageStyled = styled.img`
     object-fit : contain;
     height: 100%; 
     width: 100%; 
-    object-fit: contain
 `
 
 export function CoverImage(props){
