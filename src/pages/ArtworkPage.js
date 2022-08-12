@@ -4,7 +4,7 @@ import styled from "styled-components"
 import ArtworkTile from '../components/ArtworkTile'
 import Loader from '../components/Loader'
 import { getMetadata, getOnChainData } from "../controllers/blockchainController"
-import { Heading3 } from '../components/TextComponents'
+import { Heading3, Heading4 } from '../components/TextComponents'
 
 
 
@@ -13,7 +13,16 @@ const ArtworkPageContainer = styled.div`
     display : flex;
     flex-direction : column;
     align-items : center;
-    gap : 50px;
+    margin-top : 60px;
+    gap : 40px;
+`
+const Addresses = styled.div`
+    display : flex;
+    flex-direction : row;
+    width : 100%;
+    margin-left : 200px;
+    text-align : left;
+    gap : 40px;
 `
 
 export default function ArtworkPage(props){
@@ -35,7 +44,8 @@ export default function ArtworkPage(props){
                     creator : onChainData.creator,
                     rev : onChainData.rev,
                     timestamp : metadata.asset_specific_data.timestamp,
-                    name : metadata.name
+                    name : metadata.name,
+                    parents : onChainData.parents
                 }
                 setData(data)
                 
@@ -53,13 +63,27 @@ export default function ArtworkPage(props){
         <div>
 
             {loading? <Loader message={loading}/> :
-                
-                <ArtworkPageContainer>
-                    <Heading3>Ownership Contract: {contractAddress}</Heading3>
-                    {data? <ArtworkTile playing={playing} setPlaying={setPlaying}
-                        data={data}/> : null}
-                    {/* <ParentWorks/> */}
-            </ArtworkPageContainer>
+                 <div>
+                    {data? 
+                        <ArtworkPageContainer>
+                            <ArtworkTile playing={playing} setPlaying={setPlaying} data={data}/> 
+                            <Addresses>
+                                <div>
+                                    <Heading4>Contract Address: </Heading4>
+                                    <p>{contractAddress}</p>
+                                </div>
+                                <div>
+                                    <Heading4>Creator Address: </Heading4>
+                                    <p>{data.creator}</p>
+                                </div>
+                                
+                            </Addresses>
+                        </ArtworkPageContainer>
+                        
+                        :
+                        null
+                    }
+                </div>
             }
         </div>
         

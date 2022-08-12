@@ -13,7 +13,7 @@ export const WaveformContainer = styled.div`
 `;
 
 export const Wave = styled.div`
-  width: 600px;
+  width: 800px;
   height: 180px;
   align-items : center;
   justify-content : center;
@@ -35,15 +35,15 @@ class Waveform extends Component {
       height: 180,
       progressColor: colors.black,
       responsive: true,
-      waveColor: colors.lightGray,
+      waveColor: colors.altGray1,
       cursorColor: 'transparent',
     });
 
     this.waveform.load(track);
   };
 
-  componentWillReceiveProps (newProps) {
-    if( newProps.playing){
+  componentDidUpdate (newProps) {
+    if(newProps.playing){
       this.waveform.play()
     }else{
       this.waveform.pause()

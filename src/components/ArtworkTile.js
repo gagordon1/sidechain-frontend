@@ -51,7 +51,7 @@ export default function ArtworkTile(props){
             {props.data.audioLink? <Waveform playing={props.playing} src={props.data.audioLink}/> : null}
             <TrackInfo>
                 {props.data.name? <InfoText2>{props.data.name}</InfoText2> : null}
-                <InfoText2>{props.data.creator}</InfoText2>
+                {/* <InfoText2>{props.data.creator}</InfoText2> */}
                 <InfoText2>{props.data.rev} REV</InfoText2>
                 <InfoText2>{renderTimeDelta(props.data.timestamp)}</InfoText2>
             </TrackInfo>
