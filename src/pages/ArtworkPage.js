@@ -25,6 +25,7 @@ const Addresses = styled.div`
     margin-left : 200px;
     text-align : left;
     gap : 40px;
+    align-items : center;
 `
 
 export default function ArtworkPage(props){
@@ -33,8 +34,20 @@ export default function ArtworkPage(props){
     const { contractAddress }= useParams()
     const [loading, setLoading] = useState("")
 
-    const handleDownloadProjectFiles = () =>{
-        axios.get(data.projectFilesLink)
+    const handleDownloadProjectFiles = async () =>{
+        axios({
+            url: data.projectFilesLink, 
+            method: 'GET',
+            responseType: 'blob'
+        }).then((response) => {
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'file.zip'); //or any other extension
+            document.body.appendChild(link);
+            link.click();
+        });
+        
     }
     
 

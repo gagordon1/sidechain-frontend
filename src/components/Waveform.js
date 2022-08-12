@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 import styled from 'styled-components';
-import {useState, useEffect} from 'react'
 import { colors } from '../Theme';
 
 export const WaveformContainer = styled.div`

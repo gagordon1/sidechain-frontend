@@ -13,11 +13,11 @@ export const Heading2 = styled.p`
 `
 export const Heading4 = styled.p`
     font-size : 20px;
-    margin-top : 0px;
+    margin-top : auto;
+    margin-bottom : auto;
 `
 export const Heading3 = styled.b`
     font-size : 20px;
-    margin-top : 0px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
 `
 
