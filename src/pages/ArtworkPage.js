@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import styled from "styled-components"
 import ArtworkTile from '../components/ArtworkTile'
@@ -6,7 +5,9 @@ import Loader from '../components/Loader'
 import { getMetadata, getOnChainData } from "../controllers/blockchainController"
 import { Heading4 } from '../components/TextComponents'
 import SubmitButton from '../components/SubmitButton'
+import HorizontalArtworkContainer from '../components/HorizontalArtworkContainer'
 import axios from 'axios'
+import {useState, useEffect} from 'react'
 
 
 
@@ -57,6 +58,11 @@ export default function ArtworkPage(props){
             try {
                 const metadata = await getMetadata(contractAddress)
                 const onChainData = await getOnChainData(contractAddress)
+                const parentData = []
+                for (const parentAddress of onChainData.parents){
+                    const image = (await getMetadata(parentAddress)).image
+                    parentData.push({image : image, address : parentAddress})
+                }
                 const data = {
                     imageLink : metadata.image,
                     audioLink : metadata.asset_specific_data.artwork,
@@ -65,8 +71,9 @@ export default function ArtworkPage(props){
                     timestamp : metadata.asset_specific_data.timestamp,
                     projectFilesLink : metadata.asset_specific_data.project_files,
                     name : metadata.name,
-                    parents : onChainData.parents
+                    parents : parentData
                 }
+                console.log(data)
                 setData(data)
                 
             } catch (error) {
@@ -77,7 +84,7 @@ export default function ArtworkPage(props){
         }
         loadMetadata()
         
-    }, [])
+    }, [contractAddress])
 
     return(
         <div>
@@ -99,6 +106,7 @@ export default function ArtworkPage(props){
                                 {data.projectFilesLink? <SubmitButton text={"Download Project Files"} onClick={handleDownloadProjectFiles}/> : null}
                                 
                             </Addresses>
+                            <HorizontalArtworkContainer artwork={data.parents}/>
                         </ArtworkPageContainer>
                         
                         :
