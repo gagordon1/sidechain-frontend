@@ -2,6 +2,7 @@
 import { CoverImage } from "./Images"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { Heading2 } from "./TextComponents"
 
 const ArtworkContainer = styled.div`
     left : 0px;
@@ -31,6 +32,7 @@ export default function HorizontalArtworkContainer(props){
                 </Link>
                 )
             }
+            {props.artwork.length == 0? <Heading2>No samples.</Heading2> : null}
         </ArtworkContainer>
     )
 }

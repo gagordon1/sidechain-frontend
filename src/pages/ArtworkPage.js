@@ -3,7 +3,7 @@ import styled from "styled-components"
 import ArtworkTile from '../components/ArtworkTile'
 import Loader from '../components/Loader'
 import { getMetadata, getOnChainData } from "../controllers/blockchainController"
-import { Heading4 } from '../components/TextComponents'
+import { Heading4, Heading3 } from '../components/TextComponents'
 import SubmitButton from '../components/SubmitButton'
 import HorizontalArtworkContainer from '../components/HorizontalArtworkContainer'
 import axios from 'axios'
@@ -14,16 +14,18 @@ import {useState, useEffect} from 'react'
 
 const ArtworkPageContainer = styled.div`
     display : flex;
+    width : 1200px;
     flex-direction : column;
     align-items : center;
     margin-top : 60px;
+    margin-left : auto;
+    margin-right : auto;
     gap : 40px;
 `
 const Addresses = styled.div`
     display : flex;
     flex-direction : row;
     width : 100%;
-    margin-left : 200px;
     text-align : left;
     gap : 40px;
     align-items : center;
@@ -106,6 +108,7 @@ export default function ArtworkPage(props){
                                 {data.projectFilesLink? <SubmitButton text={"Download Project Files"} onClick={handleDownloadProjectFiles}/> : null}
                                 
                             </Addresses>
+                            <Heading3 style={{width : "100%", textAlign : "left"}}>Sampled:</Heading3>
                             <HorizontalArtworkContainer artwork={data.parents}/>
                         </ArtworkPageContainer>
                         

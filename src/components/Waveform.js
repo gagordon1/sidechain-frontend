@@ -7,13 +7,13 @@ export const WaveformContainer = styled.div`
   display: flex;  
   flex-direction: row;  
   align-items: center;
-  height: 100%;  width: 100%;
   background: transparent;
+  width : 95%;
+  justify-self : center;
 `;
 
 export const Wave = styled.div`
-  width: 800px;
-  height: 180px;
+  width : 100%;
   align-items : center;
   justify-content : center;
 `;
@@ -31,7 +31,7 @@ class Waveform extends Component {
       cursorWidth: 1,
       container: '#waveform',
       backend: 'WebAudio',
-      height: 180,
+      height : 150,
       progressColor: colors.black,
       responsive: true,
       waveColor: colors.altGray1,
@@ -54,7 +54,7 @@ class Waveform extends Component {
 
     return (
       <WaveformContainer>
-        <Wave id="waveform" />
+        <Wave style={{alignItems : "center"}} id="waveform" />
         <audio id="track" src={this.props.src } />
       </WaveformContainer>
     );

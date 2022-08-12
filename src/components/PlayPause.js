@@ -4,6 +4,8 @@ import PauseButtonImage from "../assets/pause_button.png"
 
 const PlayPauseStyled = styled.div`
     position : absolute;
+    margin-left : auto;
+    margin-right : auto;
 `
 
 const PlayPauseButton = styled.img`

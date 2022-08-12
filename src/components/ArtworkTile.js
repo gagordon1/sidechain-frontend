@@ -6,15 +6,19 @@ import PlayPause from "../components/PlayPause"
 import { InfoText2 } from "../components/TextComponents"
 const TrackContentContainer = styled.div`
     display : grid;
-    width : 1300px;
-    grid-template-columns : 1fr 1fr 1fr;
+    grid-template-columns : 200px 800px 100px;
     align-items : center;
+    justify-content : left;
+    height : 200px;
+    width : 100%;
 
 `
 const ImageAndPlayPauseStyled = styled.div`
     display : flex;
     justify-content : center;
+    justify-self : left;
     align-items : center;
+    height : 100%;
 `
 const TrackInfo = styled.div`
     display : flex;
@@ -45,7 +49,7 @@ export default function ArtworkTile(props){
         <TrackContentContainer>
             <ImageAndPlayPauseStyled>
                 <PlayPause playing={props.playing} setPlaying={props.setPlaying}/>
-                <CoverImage width={"200px"} height={"200px"} 
+                <CoverImage width={"200px"} height={"auto"} 
                     src={props.data.imageLink? props.data.imageLink : null}/>
             </ImageAndPlayPauseStyled>
             {props.data.audioLink? <Waveform playing={props.playing} src={props.data.audioLink}/> : null}
