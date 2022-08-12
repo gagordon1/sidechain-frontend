@@ -10,12 +10,7 @@ const ArtworkContainer = styled.div`
     display : flex;
     flex-direction : row;
     gap : 20px;
-`
-
-const ImageContainer = styled.div`
-    &:hover{
-        cursor : pointer
-    }
+    overflow-x : scroll;
 `
 
 
@@ -32,7 +27,7 @@ export default function HorizontalArtworkContainer(props){
                 </Link>
                 )
             }
-            {props.artwork.length == 0? <Heading2>No samples.</Heading2> : null}
+            {props.artwork.length === 0? <Heading2>No samples.</Heading2> : null}
         </ArtworkContainer>
     )
 }
