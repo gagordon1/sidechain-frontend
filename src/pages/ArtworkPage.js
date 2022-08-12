@@ -4,7 +4,9 @@ import styled from "styled-components"
 import ArtworkTile from '../components/ArtworkTile'
 import Loader from '../components/Loader'
 import { getMetadata, getOnChainData } from "../controllers/blockchainController"
-import { Heading3, Heading4 } from '../components/TextComponents'
+import { Heading4 } from '../components/TextComponents'
+import SubmitButton from '../components/SubmitButton'
+import axios from 'axios'
 
 
 
@@ -30,6 +32,10 @@ export default function ArtworkPage(props){
     const [data, setData] = useState()
     const { contractAddress }= useParams()
     const [loading, setLoading] = useState("")
+
+    const handleDownloadProjectFiles = () =>{
+        axios.get(data.projectFilesLink)
+    }
     
 
     useEffect(()=>{
@@ -44,6 +50,7 @@ export default function ArtworkPage(props){
                     creator : onChainData.creator,
                     rev : onChainData.rev,
                     timestamp : metadata.asset_specific_data.timestamp,
+                    projectFilesLink : metadata.asset_specific_data.project_files,
                     name : metadata.name,
                     parents : onChainData.parents
                 }
@@ -76,6 +83,7 @@ export default function ArtworkPage(props){
                                     <Heading4>Creator Address: </Heading4>
                                     <p>{data.creator}</p>
                                 </div>
+                                {data.projectFilesLink? <SubmitButton text={"Download Project Files"} onClick={handleDownloadProjectFiles}/> : null}
                                 
                             </Addresses>
                         </ArtworkPageContainer>

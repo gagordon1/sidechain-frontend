@@ -37,6 +37,7 @@ class Waveform extends Component {
       responsive: true,
       waveColor: colors.altGray1,
       cursorColor: 'transparent',
+      normalize : true
     });
 
     this.waveform.load(track);

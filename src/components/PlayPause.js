@@ -18,7 +18,7 @@ export default function PlayPause(props){
 
     return (
         <PlayPauseStyled onClick={() => props.setPlaying(!props.playing)}>
-            <PlayPauseButton src={props.playing? PauseButtonImage :PlayButtonImage}/>
+            <PlayPauseButton src={!props.playing? PauseButtonImage :PlayButtonImage}/>
         </PlayPauseStyled>
     )
 }
