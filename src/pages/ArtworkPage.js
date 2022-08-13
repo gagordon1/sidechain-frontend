@@ -16,6 +16,7 @@ const HalfGrid = styled.div`
     display : grid;
     grid-template-columns : 1fr 1fr;
     justify-content : start;
+    align-items : top;
 `
 
 
@@ -38,19 +39,6 @@ const Addresses = styled.div`
     align-items : center;
 `
 
-/**
- * 
- * @param str contractAddress 
- * @returns array of all ancestors for a contract
- */
-const getAncestors = async (contractAddress) =>{
-    let out = [contractAddress]
-    const parents = (await getOnChainData(contractAddress)).parents
-    for (const parent of parents){
-        out = out.concat(await getAncestors(parent))
-    }
-    return out
-}
 
 export default function ArtworkPage(props){
     const [playing, setPlaying] = useState(false)
@@ -86,7 +74,6 @@ export default function ArtworkPage(props){
                     const image = (await getMetadata(parentAddress)).image
                     parentData.push({image : image, address : parentAddress})
                 }
-                const ancestors = await getAncestors(contractAddress)
                 const data = {
                     imageLink : metadata.image,
                     audioLink : metadata.asset_specific_data.artwork,
@@ -95,8 +82,7 @@ export default function ArtworkPage(props){
                     timestamp : metadata.asset_specific_data.timestamp,
                     projectFilesLink : metadata.asset_specific_data.project_files,
                     name : metadata.name,
-                    parents : parentData,
-                    ancestors : ancestors
+                    parents : parentData
                 }
                 setData(data)
                 
@@ -131,13 +117,13 @@ export default function ArtworkPage(props){
                                 
                             </Addresses>
                             <HalfGrid>
-                                <Heading3 style={{textAlign : "left"}} >Sampled:</Heading3>
-                                <Heading3 style={{textAlign : "left"}} >Ownership Structure:</Heading3>
+                                <Heading3 style={{textAlign : "left"}} >Sampled</Heading3>
+                                <Heading3 style={{textAlign : "left"}} >Ownership</Heading3>
                             </HalfGrid>
                             
                             <HalfGrid>
                                 <HorizontalArtworkContainer artwork={data.parents}/>
-                                <OwnershipStructure ancestors={data.ancestors} />
+                                <OwnershipStructure width={"100%"} contractAddress={contractAddress} />
                             </HalfGrid>
                         </ArtworkPageContainer>
                         
