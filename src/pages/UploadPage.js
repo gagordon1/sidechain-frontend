@@ -4,7 +4,7 @@ import { UploadArtwork, UploadProjectFiles, UploadImageFile} from "../components
 import { Heading3 } from '../components/TextComponents'
 import SelectDownloadedContent from '../components/SelectDownloadedContent'
 import {useState} from 'react'
-import { uploadMetadata } from "../controllers/backendController"
+import { uploadMetadata, updateMetadataWithExternalURL } from "../controllers/backendController"
 import { deploySidechainEth} from "../controllers/blockchainController"
 import SubmitButton from '../components/SubmitButton'
 import Loader from "../components/Loader"
@@ -93,6 +93,12 @@ export default function UploadPage(props){
         try {
             const address = await deploySidechainEth(REV, creatorAddress? creatorAddress :props.account, 
                 parents, baseURI)
+            try{
+                await updateMetadataWithExternalURL(baseURI +"-1", address)
+            }catch(error){
+                console.log(error)
+                alert("Contract deployed but error updating metadata.")
+            } 
             setLoading("")
             navigate("/artwork/" + address)
 

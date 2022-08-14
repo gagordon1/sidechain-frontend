@@ -20,3 +20,15 @@ export async function uploadMetadata(formData){
     return response.data
 
 }
+
+/**
+ * Updates the metadata database with the contract address
+ * @param str update metadata endpoint
+ * @param str contractAddress 
+ */
+export async function updateMetadataWithExternalURL(baseURI, contractAddress){
+    const config = {     
+        headers: { 'content-type': 'text/plain' }
+    }
+    return await axios.post(baseURI,contractAddress, config)
+}

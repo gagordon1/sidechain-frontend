@@ -17,6 +17,7 @@ const HalfGrid = styled.div`
     grid-template-columns : 1fr 1fr;
     justify-content : start;
     align-items : top;
+    overflow-y : scroll
 `
 
 

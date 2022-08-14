@@ -1,5 +1,6 @@
 const { toBeInTheDOM } = require('@testing-library/jest-dom/dist/matchers');
 const ethers = require('ethers');
+const axios = require('axios')
 
 //maps songs to their parents
 const parentMap = {
@@ -75,6 +76,15 @@ const deployTestNetwork = async(provider) =>{
         baseURI = BACKEND + "/test-" + title + "/"
         const contract = await factory.deploy(creatorAddress, parents, rev, baseURI)
         await contract.deployed()
+        try {
+            const config = {     
+                headers: { 'content-type': 'text/plain' }
+            }
+            await axios.post(baseURI + "-1", contract.address, config) //update external url
+        } catch (error) {
+            console.log(error)
+        }
+        
         addressMap[title] = contract.address
     }
     console.log(addressMap)
