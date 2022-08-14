@@ -24,11 +24,12 @@ function App() {
     
     <div className="App">
       {account}
-      <Navbar 
-        account={account}
-        setAccount={setAccount}/>
+      
       <RoutesContainer>
         <Router className="Router">
+          <Navbar 
+          account={account}
+          setAccount={setAccount}/>
           <Routes>
           <Route path="/" element={<FeedPage/>}/>
             <Route path="/artwork/:contractAddress" element={<ArtworkPage/>}/>

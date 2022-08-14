@@ -10,8 +10,7 @@ const TrackContentContainer = styled.div`
     align-items : center;
     justify-content : left;
     height : 200px;
-    width : 100%;
-
+    width : 1100px
 `
 const ImageAndPlayPauseStyled = styled.div`
     display : flex;
@@ -52,7 +51,7 @@ export default function ArtworkTile(props){
                 <CoverImage width={"200px"} height={"auto"} 
                     src={props.data.imageLink? props.data.imageLink : null}/>
             </ImageAndPlayPauseStyled>
-            {props.data.audioLink? <Waveform playing={props.playing} src={props.data.audioLink}/> : null}
+            {props.data.audioLink? <Waveform id={0} style={{"position" : "relative"}} playing={props.playing} src={props.data.audioLink}/> : null}
             <TrackInfo>
                 {props.data.name? <InfoText2>{props.data.name}</InfoText2> : null}
                 {/* <InfoText2>{props.data.creator}</InfoText2> */}

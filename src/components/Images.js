@@ -9,7 +9,6 @@ export const CoverImageStyled = styled.img`
 `
 
 export function CoverImage(props){
-    console.log(props.src)
     return(
         <InputContainer width={props.width} height={props.height} >
             <CoverImageStyled src={props.src}/>

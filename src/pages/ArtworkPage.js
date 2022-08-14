@@ -15,7 +15,6 @@ const HalfGrid = styled.div`
     width : 100%;
     display : grid;
     grid-template-columns : 1fr 1fr;
-    justify-content : start;
     align-items : top;
     overflow-y : scroll
 `
@@ -25,7 +24,7 @@ const ArtworkPageContainer = styled.div`
     display : flex;
     width : 1200px;
     flex-direction : column;
-    align-items : center;
+    align-items : left;
     margin-top : 40px;
     margin-left : auto;
     margin-right : auto;
@@ -104,7 +103,7 @@ export default function ArtworkPage(props){
                  <div>
                     {data? 
                         <ArtworkPageContainer>
-                            <ArtworkTile playing={playing} setPlaying={setPlaying} data={data}/> 
+                            <ArtworkTile id={0} playing={playing} setPlaying={setPlaying} data={data}/> 
                             <Addresses>
                                 <div>
                                     <Heading4>Contract Address: </Heading4>

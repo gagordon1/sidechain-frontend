@@ -2,7 +2,7 @@ import LogoImage from '../assets/logo512.png'
 import styled from 'styled-components'
 import { InputContainer } from './InputContainer'
 import ProfileIconImage from '../assets/profile_icon.png'
-
+import { Link } from 'react-router-dom'
 import { Heading1 } from './TextComponents'
 import MetaMaskComponent from './MetaMaskComponent'
 
@@ -43,10 +43,12 @@ export default function Navbar(props){
 
     return(
         <NavbarContainer className="App-header">
-            <LogoContainer>
-                <Logo src={LogoImage}/>
-                <Heading1>Sidechain</Heading1> 
-            </LogoContainer>
+            <Link to="/">
+                <LogoContainer>
+                    <Logo src={LogoImage}/>
+                    <Heading1>Sidechain</Heading1> 
+                </LogoContainer>
+            </Link>
             <RightSide>
                 <ProfileIcon src={ProfileIconImage}/>
                 <InputContainer width={"200px"} height={"45px"}>

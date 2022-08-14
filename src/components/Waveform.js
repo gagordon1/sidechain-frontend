@@ -24,12 +24,12 @@ class Waveform extends Component {
     if(this.waveform){
         this.waveform.destroy()
     }
-    const track = document.querySelector('#track');
+    const track = document.querySelector(`#track${this.props.id}`);
 
     this.waveform = WaveSurfer.create({
       barWidth: 3,
       cursorWidth: 1,
-      container: '#waveform',
+      container: `#waveform${this.props.id}`,
       backend: 'WebAudio',
       height : 150,
       progressColor: colors.black,
@@ -54,8 +54,8 @@ class Waveform extends Component {
 
     return (
       <WaveformContainer>
-        <Wave style={{alignItems : "center"}} id="waveform" />
-        <audio id="track" src={this.props.src } />
+        <Wave style={{alignItems : "center"}} id={`waveform${this.props.id}`} />
+        <audio id={`track${this.props.id}`} src={this.props.src } />
       </WaveformContainer>
     );
   }
