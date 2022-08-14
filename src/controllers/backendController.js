@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SIDECHAIN_UPLOAD_ENDPOINT} from '../config.js'
+import {SIDECHAIN_UPLOAD_ENDPOINT, SIDECHAIN_FEED_ENDPOINT} from '../config.js'
 
 /**
  * Uploads metadata from a formData object to the backend server
@@ -31,4 +31,25 @@ export async function updateMetadataWithExternalURL(baseURI, contractAddress){
         headers: { 'content-type': 'text/plain' }
     }
     return await axios.post(baseURI,contractAddress, config)
+}
+
+/**
+ * 
+ * @param str sort 
+ * @param str keyword 
+ * @param str limit 
+ * @param str offset 
+ * @returns [{*}] list of sidechain objects
+ */
+export async function getSidechains(sort, keyword, limit, offset){
+    const response = await axios.get(SIDECHAIN_FEED_ENDPOINT,{
+        params :{
+            sort  : sort,
+            keyword : keyword,
+            limit : limit,
+            offset : offset
+        }
+    } )
+    console.log(response.data.items)
+    return response.data.items
 }

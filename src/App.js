@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import styled from 'styled-components';
+import FeedPage from './pages/FeedPage';
 import UploadPage from './pages/UploadPage'
 import ArtworkPage from './pages/ArtworkPage';
 import Navbar from './components/Navbar';
@@ -29,6 +30,7 @@ function App() {
       <RoutesContainer>
         <Router className="Router">
           <Routes>
+          <Route path="/" element={<FeedPage/>}/>
             <Route path="/artwork/:contractAddress" element={<ArtworkPage/>}/>
             <Route path="/upload" element={
               <div>
