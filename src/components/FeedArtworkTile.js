@@ -10,7 +10,8 @@ import { useNavigate } from "react-router-dom"
 
 const feedArtworkTileStyle = {
     flexDirection : "column",
-    justifyContent : "start"
+    justifyContent : "start",
+    border : "none"
 }
 
 const TrackInfo = styled.div`

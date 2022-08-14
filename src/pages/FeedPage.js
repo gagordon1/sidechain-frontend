@@ -9,6 +9,7 @@ const FeedContainer = styled.div`
     display : grid;
     grid-template-columns : 1fr 1fr 1fr;
     margin-top : 100px;
+    margin-bottom : 100px;
     width : 1000px;
     justify-items : center;
     margin-left : auto;
@@ -24,10 +25,12 @@ export default function FeedPage(){
     const [sort, setSort] = useState("timestamp_desc")
     const [keyword, setKeyword] = useState("")
 
+    const defaultQuerySize = 9
+
     useEffect(()=>{
         const loadData = async() =>{
-            const sidechains = await getSidechains(sort,keyword,9,0)
-            const newData = []
+            const sidechains = await getSidechains(sort,keyword,defaultQuerySize,data.length)
+            const newData = [...data]
             const newPlaying = []
             for(const chain of sidechains){
                 const contractAddress = getAddressFromExternalURL(chain.external_url)
