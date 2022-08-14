@@ -2,22 +2,21 @@ import styled from "styled-components"
 import { useState, useEffect } from "react"
 import { getSidechains } from "../controllers/backendController"
 import { getOnChainData } from "../controllers/blockchainController"
-import { FRONTEND } from "../config"
-import ArtworkTile from "../components/ArtworkTile"
+import { getAddressFromExternalURL } from "../helperFunctions"
+import FeedArtworkTile  from "../components/FeedArtworkTile"
 
 const FeedContainer = styled.div`
-    display : flex;
-    width : 100%;
-    flex-direction : column;
-    align-items : center;
-    gap : 30px;
-    margin-top : 40px;
+    display : grid;
+    grid-template-columns : 1fr 1fr 1fr;
+    margin-top : 100px;
+    width : 1000px;
+    justify-items : center;
+    margin-left : auto;
+    margin-right : auto;
+    grid-gap : 50px;
 `
 
-const getAddressFromExternalURL = (externalURL) =>{
-    var re = new RegExp(FRONTEND +"/artwork/", 'g');
-    return externalURL.replace(re, "")
-}
+
 
 export default function FeedPage(){
 
@@ -25,10 +24,9 @@ export default function FeedPage(){
     const [sort, setSort] = useState("timestamp_desc")
     const [keyword, setKeyword] = useState("")
 
-
     useEffect(()=>{
         const loadData = async() =>{
-            const sidechains = await getSidechains(sort,keyword,10,0)
+            const sidechains = await getSidechains(sort,keyword,9,0)
             const newData = []
             const newPlaying = []
             for(const chain of sidechains){
@@ -40,6 +38,7 @@ export default function FeedPage(){
                     creator : onChainData.creator,
                     rev : onChainData.rev,
                     timestamp : chain.timestamp_added,
+                    contractAddress : contractAddress,
                     name : chain.name,
                     id : chain.id,
                     playing : false
@@ -54,7 +53,11 @@ export default function FeedPage(){
 
     return (
         <FeedContainer>
-            {data.map((d, i) => <ArtworkTile id={i} playing={d.playing} setPlaying={()=> {}} data={d}/> )}
+            {data.map((d, i) => 
+                <FeedArtworkTile 
+                    id={i} 
+                    playing={d.playing} 
+                    data={d}/> )}
         </FeedContainer>
     )
 

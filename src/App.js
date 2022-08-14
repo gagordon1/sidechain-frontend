@@ -28,8 +28,8 @@ function App() {
       <RoutesContainer>
         <Router className="Router">
           <Navbar 
-          account={account}
-          setAccount={setAccount}/>
+            account={account}
+            setAccount={setAccount}/>
           <Routes>
           <Route path="/" element={<FeedPage/>}/>
             <Route path="/artwork/:contractAddress" element={<ArtworkPage/>}/>

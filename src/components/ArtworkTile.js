@@ -4,6 +4,8 @@ import { CoverImage } from "../components/Images"
 import Waveform from "../components/Waveform"
 import PlayPause from "../components/PlayPause"
 import { InfoText2 } from "../components/TextComponents"
+import { renderTimeDelta } from "../helperFunctions"
+
 const TrackContentContainer = styled.div`
     display : grid;
     grid-template-columns : 200px 800px 100px;
@@ -26,22 +28,6 @@ const TrackInfo = styled.div`
     gap : 3px;
 `
 
-const renderTimeDelta = (timestamp) => {
-    var diff =  Date.now() / 1000 - timestamp;
-    var years = (diff / ((60 * 60 * 24 * 365)))
-    var days = (diff / (60 * 60 * 24));
-    var hours = (diff / (60 * 60));
-    var minutes = (diff / (60));
-    for (const val of [[years, "y"], [days, "d"], [hours, "h"], [minutes, "m"]]){
-        let num = val[0]
-        let char = val[1]
-        if (num >=1){
-            return Math.round(num).toString() + char
-        }
-    }
-    return "<1m"
-}
-
 export default function ArtworkTile(props){
 
     return (
@@ -54,7 +40,6 @@ export default function ArtworkTile(props){
             {props.data.audioLink? <Waveform id={0} style={{"position" : "relative"}} playing={props.playing} src={props.data.audioLink}/> : null}
             <TrackInfo>
                 {props.data.name? <InfoText2>{props.data.name}</InfoText2> : null}
-                {/* <InfoText2>{props.data.creator}</InfoText2> */}
                 <InfoText2>{props.data.rev} REV</InfoText2>
                 <InfoText2>{renderTimeDelta(props.data.timestamp)}</InfoText2>
             </TrackInfo>

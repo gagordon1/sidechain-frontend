@@ -2,7 +2,7 @@ import LogoImage from '../assets/logo512.png'
 import styled from 'styled-components'
 import { InputContainer } from './InputContainer'
 import ProfileIconImage from '../assets/profile_icon.png'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Heading1 } from './TextComponents'
 import MetaMaskComponent from './MetaMaskComponent'
 
@@ -24,6 +24,9 @@ const NavbarContainer = styled.header`
 `
 const LogoContainer = styled.div`
     display : flex;
+    &:hover{
+        cursor : pointer;
+    }
 `
 const ProfileIcon = styled.img`
     height : 30px;
@@ -41,14 +44,14 @@ const RightSide = styled.div`
 
 export default function Navbar(props){
 
+    const navigate = useNavigate()
+
     return(
         <NavbarContainer className="App-header">
-            <Link to="/">
-                <LogoContainer>
-                    <Logo src={LogoImage}/>
-                    <Heading1>Sidechain</Heading1> 
-                </LogoContainer>
-            </Link>
+            <LogoContainer onClick={()=>navigate("/")}>
+                <Logo src={LogoImage}/>
+                <Heading1>Sidechain</Heading1> 
+            </LogoContainer>
             <RightSide>
                 <ProfileIcon src={ProfileIconImage}/>
                 <InputContainer width={"200px"} height={"45px"}>

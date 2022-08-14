@@ -30,3 +30,19 @@ export const InfoText2 = styled.p`
     text-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
     margin : 0px;
 `
+
+export const InfoText3 = styled.p`
+    font-size : 15px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
+    margin : 0px;
+`
+
+export const ClickableInfoText3 = styled.p`
+    font-size : 15px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
+    margin : 0px;
+    &:hover{
+        text-decoration : underline;
+        cursor : pointer;
+    }
+`
