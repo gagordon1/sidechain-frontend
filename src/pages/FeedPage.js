@@ -4,12 +4,11 @@ import { getSidechains } from "../controllers/backendController"
 import { getOnChainData } from "../controllers/blockchainController"
 import { getAddressFromExternalURL } from "../helperFunctions"
 import FeedArtworkTile  from "../components/FeedArtworkTile"
+import DownArrow from "../components/DownArrow"
 
 const FeedContainer = styled.div`
     display : grid;
     grid-template-columns : 1fr 1fr 1fr;
-    margin-top : 100px;
-    margin-bottom : 100px;
     width : 1000px;
     justify-items : center;
     margin-left : auto;
@@ -17,6 +16,13 @@ const FeedContainer = styled.div`
     grid-gap : 50px;
 `
 
+const PageContainer = styled.div`
+    display : flex;
+    margin-top : 100px;
+    margin-bottom : 75px;
+    gap : 75px;
+    flex-direction : column;
+`
 
 
 export default function FeedPage(){
@@ -27,41 +33,51 @@ export default function FeedPage(){
 
     const defaultQuerySize = 9
 
-    useEffect(()=>{
-        const loadData = async() =>{
-            const sidechains = await getSidechains(sort,keyword,defaultQuerySize,data.length)
-            const newData = [...data]
-            const newPlaying = []
-            for(const chain of sidechains){
-                const contractAddress = getAddressFromExternalURL(chain.external_url)
-                const onChainData = await getOnChainData(contractAddress)
-                const p = {
-                    imageLink : chain.image,
-                    audioLink : chain.artwork,
-                    creator : onChainData.creator,
-                    rev : onChainData.rev,
-                    timestamp : chain.timestamp_added,
-                    contractAddress : contractAddress,
-                    name : chain.name,
-                    id : chain.id,
-                    playing : false
-                }
-                newData.push(p)
+    const handleDownArrowClick = () =>{
+        loadData()
+    }
+
+    const loadData = async() =>{
+        const sidechains = await getSidechains(sort,keyword,defaultQuerySize,data.length)
+        const newData = [...data]
+        const newPlaying = []
+        for(const chain of sidechains){
+            const contractAddress = getAddressFromExternalURL(chain.external_url)
+            const onChainData = await getOnChainData(contractAddress)
+            const p = {
+                imageLink : chain.image,
+                audioLink : chain.artwork,
+                creator : onChainData.creator,
+                rev : onChainData.rev,
+                timestamp : chain.timestamp_added,
+                contractAddress : contractAddress,
+                name : chain.name,
+                id : chain.id,
+                playing : false
             }
-            setData(newData)
+            newData.push(p)
         }
+        setData(newData)
+    }
+
+    useEffect(()=>{
         loadData()
     }, [])
 
 
     return (
-        <FeedContainer>
-            {data.map((d, i) => 
-                <FeedArtworkTile 
-                    id={i} 
-                    playing={d.playing} 
-                    data={d}/> )}
-        </FeedContainer>
+        <PageContainer>
+            <FeedContainer>
+                {data.map((d, i) => 
+                    <FeedArtworkTile 
+                        id={i} 
+                        key={d.contractAddress}
+                        playing={d.playing} 
+                        data={d}/> )}
+            </FeedContainer>
+            <DownArrow handleClick={handleDownArrowClick}/>
+        </PageContainer>
+        
     )
 
 }
