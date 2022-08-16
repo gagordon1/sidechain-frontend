@@ -66,7 +66,7 @@ export default function FeedPage(){
 
 
     return (
-        <PageContainer>
+        <PageContainer key={"feedPage"}>
             <FeedContainer>
                 {data.map((d, i) => 
                     <FeedArtworkTile 

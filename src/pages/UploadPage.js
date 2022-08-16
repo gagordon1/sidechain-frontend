@@ -113,7 +113,7 @@ export default function UploadPage(props){
 
     
     return (
-        <div>
+        <div key={"uploadPage"}>
         {
             loading? <Loader message={loading}/> :
             <UploadPageContainer>

@@ -100,7 +100,7 @@ export default function ArtworkPage(props){
     }, [contractAddress])
 
     return(
-        <div>
+        <div key={`artworkPage${contractAddress}`}>
 
             {loading? <Loader message={loading}/> :
                  <div>

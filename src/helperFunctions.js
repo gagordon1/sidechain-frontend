@@ -21,6 +21,10 @@ export const getAddressFromExternalURL = (externalURL) =>{
     return externalURL.replace(re, "")
 }
 
+export const randomGen= ()=>{
+    return Math.floor(Math.random()*10000)
+}
+
 /**
  * 
  * @param str address blockchain address

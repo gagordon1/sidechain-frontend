@@ -5,7 +5,7 @@ import { getMetadata, getOnChainData } from "../controllers/blockchainController
 import DefaultImage from '../assets/logo512.png'
 import { colors } from "../Theme"
 import { InfoText2 } from "./TextComponents"
-import LeaderLine from "react-leader-line"
+import Xarrow from "react-xarrows"
 
 
 const OwnershipImage = styled.img`
@@ -37,19 +37,6 @@ export default function OwnershipStructure(props){
         rev : ""
     })
 
-    const drawLines = () =>{
-        const parentElement = document.getElementById(`ownershipImage${props.contractAddress}`)
-        for (const parent of data.parents){
-            let childElement = document.getElementById(`ownershipImage${parent}`)
-            if(parentElement&&childElement){
-                new LeaderLine(childElement,parentElement, {
-                    color : "black",
-                    path : "straight",
-                    size : 2
-                })
-            }         
-        }
-    }   
 
     useEffect(() => {
         const loadData = async() =>{
@@ -63,7 +50,7 @@ export default function OwnershipStructure(props){
             )
         }
         loadData()
-    }, [])
+    }, [props.contractAddress])
 
     return(
         <div style={{overflow : "hide"}}>
@@ -75,11 +62,25 @@ export default function OwnershipStructure(props){
             </ParentContainer>
             <ChildContainer>
                 {data.parents.map(parent =>
-                        <OwnershipStructure contractAddress={parent}/>
+                    <div>
+                        <OwnershipStructure key={`ownershipStructure${parent}`}
+                            contractAddress={parent}/>
+                        <Xarrow
+                            start = {`ownershipImage${parent}`}
+                            end ={`ownershipImage${props.contractAddress}`}
+                            path="grid"
+                            color="black"
+                            headShape="circle"
+                            headSize="2"
+                            key={`ownershipImage${parent}${props.contractAddress}`}
+                        />
+
+                    </div>
+                        
                     )
                 }
+                
             </ChildContainer>
-            {drawLines()}
         </div>
     )
 

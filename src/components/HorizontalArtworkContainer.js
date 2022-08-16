@@ -19,10 +19,9 @@ export default function HorizontalArtworkContainer(props){
     return (
         <ArtworkContainer>
             {props.artwork.map(parent => 
-                <Link to={`/artwork/${parent.address}`}>
+                <Link key={parent.address} to={`/artwork/${parent.address}`}>
                     <CoverImage 
                         src={parent.image} 
-                        key={parent.address}
                         width={"200px"} height={"200px"}/>
                 </Link>
                 )

@@ -11,7 +11,8 @@ import UploadPage from './pages/UploadPage'
 import ArtworkPage from './pages/ArtworkPage';
 import Navbar from './components/Navbar';
 import { Heading3 } from './components/TextComponents';
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import { randomGen } from './helperFunctions';
 
 const RoutesContainer = styled.div`
 
@@ -29,7 +30,7 @@ function App() {
             account={account}
             setAccount={setAccount}/>
           <Routes>
-          <Route path="/" element={<FeedPage/>}/>
+            <Route path="/" element={<FeedPage/>}/>
             <Route path="/artwork/:contractAddress" element={<ArtworkPage/>}/>
             <Route path="/upload" element={
               <div>
