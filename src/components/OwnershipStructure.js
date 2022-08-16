@@ -4,6 +4,9 @@ import { useEffect, useState } from "react"
 import { getMetadata, getOnChainData } from "../controllers/blockchainController"
 import DefaultImage from '../assets/logo512.png'
 import { colors } from "../Theme"
+import { InfoText2 } from "./TextComponents"
+import LeaderLine from "react-leader-line"
+import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers"
 
 
 const OwnershipImage = styled.img`
@@ -16,8 +19,13 @@ const OwnershipImage = styled.img`
         cursor : pointer;
     }
 `
+const ParentContainer = styled.div`
+    display : flex;
+    justify-content : center;
+    align-items : center;
+`
 const ChildContainer = styled.div`
-    margin-top : 20px;
+    margin-top : 40px;
     display : flex;
     justify-content : center;
     flex-direction : row;
@@ -28,16 +36,32 @@ export default function OwnershipStructure(props){
 
     const [data, setData] = useState({
         image : DefaultImage,
-        parents : []
+        parents : [],
+        rev : ""
     })
+
+    const drawLines = () =>{
+        const parentElement = document.getElementById(`ownershipImage${props.contractAddress}`)
+        for (const parent of data.parents){
+            let childElement = document.getElementById(`ownershipImage${parent}`)
+            if(parentElement&&childElement){
+                new LeaderLine(childElement,parentElement, {
+                    color : "black",
+                    path : "straight",
+                    size : 2
+                })
+            }         
+        }
+    }   
 
     useEffect(() => {
         const loadData = async() =>{
             const image = (await getMetadata(props.contractAddress)).image
-            const parents = (await getOnChainData(props.contractAddress)).parents
+            const onChainData = await getOnChainData(props.contractAddress)
             setData({
                     image : image,
-                    parents : parents
+                    parents : onChainData.parents,
+                    rev : onChainData.rev
                 }   
             )
         }
@@ -45,17 +69,20 @@ export default function OwnershipStructure(props){
     }, [])
 
     return(
-        <div>
-            <Link to={"/artwork/" + props.contractAddress}>
-                <OwnershipImage src={data.image}/>
-            </Link>
+        <div style={{overflow : "hide"}}>
+            <ParentContainer style={{display: "flex"}}>
+                <Link to={"/artwork/" + props.contractAddress}>
+                    <OwnershipImage id={`ownershipImage${props.contractAddress}`} src={data.image}/>
+                </Link>
+                <InfoText2 style={{marginLeft : "10px"}}>{data.rev}</InfoText2>
+            </ParentContainer>
             <ChildContainer>
                 {data.parents.map(parent =>
                         <OwnershipStructure contractAddress={parent}/>
                     )
                 }
             </ChildContainer>
-            
+            {drawLines()}
         </div>
     )
 

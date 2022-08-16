@@ -3,7 +3,7 @@ import styled from "styled-components"
 import ArtworkTile from '../components/ArtworkTile'
 import Loader from '../components/Loader'
 import { getMetadata, getOnChainData } from "../controllers/blockchainController"
-import { Heading4, Heading3 } from '../components/TextComponents'
+import { Heading4, Heading3, InfoText3 } from '../components/TextComponents'
 import SubmitButton from '../components/SubmitButton'
 import HorizontalArtworkContainer from '../components/HorizontalArtworkContainer'
 import axios from 'axios'
@@ -11,13 +11,15 @@ import {useState, useEffect} from 'react'
 import OwnershipStructure from '../components/OwnershipStructure.js'
 
 
-const HalfGrid = styled.div`
+const ThirdGrid = styled.div`
     width : 100%;
     display : grid;
-    grid-template-columns : 1fr 1fr;
+    grid-template-columns : 1fr 1fr 1fr;
     align-items : top;
-    overflow-y : scroll
+    overflow-y : scroll;
 `
+
+
 
 
 const ArtworkPageContainer = styled.div`
@@ -82,6 +84,7 @@ export default function ArtworkPage(props){
                     timestamp : metadata.asset_specific_data.timestamp,
                     projectFilesLink : metadata.asset_specific_data.project_files,
                     name : metadata.name,
+                    description : metadata.description,
                     parents : parentData
                 }
                 setData(data)
@@ -116,15 +119,17 @@ export default function ArtworkPage(props){
                                 {data.projectFilesLink? <SubmitButton text={"Download Project Files"} onClick={handleDownloadProjectFiles}/> : null}
                                 
                             </Addresses>
-                            <HalfGrid>
-                                <Heading3 style={{textAlign : "left"}} >Sampled</Heading3>
-                                <Heading3 style={{textAlign : "left"}} >Ownership</Heading3>
-                            </HalfGrid>
+                            <ThirdGrid>
+                                <Heading3 style={{textAlign:"left"}}>Description</Heading3>
+                                <Heading3 style={{textAlign:"left"}}>Sampled</Heading3>
+                                <Heading3 style={{textAlign:"left"}}>Ownership</Heading3>
+                            </ThirdGrid>
                             
-                            <HalfGrid>
+                            <ThirdGrid>
+                                <InfoText3 style={{textAlign:"left"}}>{data.description}</InfoText3>
                                 <HorizontalArtworkContainer artwork={data.parents}/>
                                 <OwnershipStructure width={"100%"} contractAddress={contractAddress} />
-                            </HalfGrid>
+                            </ThirdGrid>
                         </ArtworkPageContainer>
                         
                         :

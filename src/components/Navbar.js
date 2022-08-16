@@ -5,6 +5,7 @@ import ProfileIconImage from '../assets/profile_icon.png'
 import { useNavigate } from 'react-router-dom'
 import { Heading1 } from './TextComponents'
 import MetaMaskComponent from './MetaMaskComponent'
+import NewSidechainImage from '../assets/new_sidechain.png'
 
 
 const Logo = styled.img`
@@ -53,6 +54,7 @@ export default function Navbar(props){
                 <Heading1>Sidechain</Heading1> 
             </LogoContainer>
             <RightSide>
+                <ProfileIcon src={NewSidechainImage} onClick={()=>navigate("/upload")}/>
                 <ProfileIcon src={ProfileIconImage}/>
                 <InputContainer width={"200px"} height={"45px"}>
                     <MetaMaskComponent 

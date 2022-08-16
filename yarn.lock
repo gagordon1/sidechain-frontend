@@ -10733,6 +10733,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   "version" "18.2.0"
 
+"react-leader-line@^1.0.5":
+  "integrity" "sha512-oSFQ8M/ByqE7VSlV4Oetze9OdDR3iyPAToeCj940ON0o72m3MPuQ0fOgKHgoJ9ggk15PSzh8zHsZHMc9hV22uw=="
+  "resolved" "https://registry.npmjs.org/react-leader-line/-/react-leader-line-1.0.5.tgz"
+  "version" "1.0.5"
+
 "react-refresh@^0.11.0", "react-refresh@>=0.10.0 <1.0.0":
   "integrity" "sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A=="
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"

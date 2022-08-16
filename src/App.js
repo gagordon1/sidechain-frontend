@@ -23,8 +23,6 @@ function App() {
   return (
     
     <div className="App">
-      {account}
-      
       <RoutesContainer>
         <Router className="Router">
           <Navbar 
