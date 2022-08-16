@@ -12,7 +12,7 @@ const TrackContentContainer = styled.div`
     align-items : center;
     justify-content : left;
     height : 200px;
-    width : 1100px
+    width : 1100px;
 `
 const ImageAndPlayPauseStyled = styled.div`
     display : flex;

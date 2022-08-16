@@ -11,7 +11,9 @@ import { useNavigate } from "react-router-dom"
 const feedArtworkTileStyle = {
     flexDirection : "column",
     justifyContent : "start",
-    border : "none"
+    border : "none",
+    animationName : "fade-in",
+    animationDuration : "1s"
 }
 
 const TrackInfo = styled.div`

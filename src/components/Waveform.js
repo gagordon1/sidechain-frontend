@@ -24,7 +24,8 @@ class Waveform extends Component {
     if(this.waveform){
         this.waveform.destroy()
     }
-    const track = document.querySelector(`#track${this.props.id}`);
+    const track = document.querySelector("audio");
+    track.src = this.props.src
 
     this.waveform = WaveSurfer.create({
       barWidth: 3,
@@ -42,6 +43,13 @@ class Waveform extends Component {
     this.waveform.load(track);
   };
 
+  componentWillUnmount(){
+    this.waveform.pause()
+    const track = document.querySelector("audio");
+    track.src = ""
+    
+  }
+
   componentDidUpdate (newProps) {
     if(newProps.playing){
       this.waveform.play()
@@ -55,7 +63,6 @@ class Waveform extends Component {
     return (
       <WaveformContainer>
         <Wave style={{alignItems : "center"}} id={`waveform${this.props.id}`} />
-        <audio id={`track${this.props.id}`} src={this.props.src } />
       </WaveformContainer>
     );
   }
