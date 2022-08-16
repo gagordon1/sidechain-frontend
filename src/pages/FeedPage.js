@@ -5,23 +5,25 @@ import { getOnChainData } from "../controllers/blockchainController"
 import { getAddressFromExternalURL } from "../helperFunctions"
 import FeedArtworkTile  from "../components/FeedArtworkTile"
 import DownArrow from "../components/DownArrow"
+import SearchAndSort from "../components/SearchAndSort"
 
 const FeedContainer = styled.div`
     display : grid;
     grid-template-columns : 1fr 1fr 1fr;
-    width : 1000px;
     justify-items : center;
-    margin-left : auto;
-    margin-right : auto;
     grid-gap : 50px;
+    width : 100%;
 `
 
 const PageContainer = styled.div`
     display : flex;
-    margin-top : 100px;
+    margin-top : 50px;
     margin-bottom : 75px;
-    gap : 75px;
+    gap : 50px;
     flex-direction : column;
+    width : 1000px;
+    margin-left : auto;
+    margin-right : auto;
 `
 
 
@@ -34,13 +36,12 @@ export default function FeedPage(){
     const defaultQuerySize = 9
 
     const handleDownArrowClick = () =>{
-        loadData()
+        loadData(data)
     }
 
-    const loadData = async() =>{
-        const sidechains = await getSidechains(sort,keyword,defaultQuerySize,data.length)
-        const newData = [...data]
-        const newPlaying = []
+    const loadData = async(pastData) =>{
+        const sidechains = await getSidechains(sort,keyword,defaultQuerySize,pastData.length)
+        const newData = [...pastData]
         for(const chain of sidechains){
             const contractAddress = getAddressFromExternalURL(chain.external_url)
             const onChainData = await getOnChainData(contractAddress)
@@ -61,12 +62,14 @@ export default function FeedPage(){
     }
 
     useEffect(()=>{
-        loadData()
-    }, [])
+        loadData([])
+    },[sort])
 
 
     return (
         <PageContainer key={"feedPage"}>
+            <SearchAndSort keyword={keyword} setKeyword={setKeyword} 
+                sort={sort} setSort={setSort}/>
             <FeedContainer>
                 {data.map((d, i) => 
                     <FeedArtworkTile 

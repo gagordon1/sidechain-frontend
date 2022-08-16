@@ -50,6 +50,5 @@ export async function getSidechains(sort, keyword, limit, offset){
             offset : offset
         }
     } )
-    console.log(response.data.items)
     return response.data.items
 }

@@ -11,8 +11,7 @@ import UploadPage from './pages/UploadPage'
 import ArtworkPage from './pages/ArtworkPage';
 import Navbar from './components/Navbar';
 import { Heading3 } from './components/TextComponents';
-import {useEffect, useState} from 'react'
-import { randomGen } from './helperFunctions';
+import {useState} from 'react'
 
 const RoutesContainer = styled.div`
 

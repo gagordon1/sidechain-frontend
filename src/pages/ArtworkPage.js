@@ -20,8 +20,6 @@ const ThirdGrid = styled.div`
 `
 
 
-
-
 const ArtworkPageContainer = styled.div`
     display : flex;
     width : 1200px;

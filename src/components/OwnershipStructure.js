@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { useEffect, useState } from "react"
 import { getMetadata, getOnChainData } from "../controllers/blockchainController"
 import DefaultImage from '../assets/logo512.png'
-import { colors } from "../Theme"
 import { InfoText2 } from "./TextComponents"
 import Xarrow from "react-xarrows"
 
