@@ -1,17 +1,16 @@
 import styled from "styled-components"
-import { InputContainer } from "./InputContainer"
 
 
-export const CoverImageStyled = styled.img`
+const CoverImageStyled = styled.img`
     object-fit : contain;
-    height: 100%; 
-    width: 100%; 
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
 `
 
 export function CoverImage(props){
     return(
-        <InputContainer width={props.width} height={props.height} >
-            <CoverImageStyled src={props.src}/>
-        </InputContainer>
+        <div style={{width : `${props.width}px`, height : `${props.height}px`}}>
+            <CoverImageStyled height={props.height} width={props.width} src={props.src}/>
+        </div>
+        
     )
 }

@@ -6,14 +6,11 @@ import DefaultImage from '../assets/logo512.png'
 import { colors } from "../Theme"
 import { InfoText2 } from "./TextComponents"
 import LeaderLine from "react-leader-line"
-import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers"
 
 
 const OwnershipImage = styled.img`
     width : 50px;
     height : 50px;
-    box-sizing: border-box;
-    border: 1px solid ${colors.inputBorderColor};
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
     &:hover{
         cursor : pointer;

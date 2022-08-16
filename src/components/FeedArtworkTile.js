@@ -27,6 +27,7 @@ const TrackInfo = styled.div`
 const ArtworkTileImage = styled.img`
     width : 15px;
     height : auto;
+
 `
 const IconWithText = styled.div`
     display : flex;
@@ -46,7 +47,7 @@ export default function FeedArtworkTile(props){
 
     return (
         <InputContainer style={feedArtworkTileStyle} width={"250px"} height ={"320px"}>
-            <CoverImage src={props.data.imageLink}/>
+            <CoverImage height={"250px"} width={"250px"} src={props.data.imageLink}/>
             <TrackInfo>
                 <IconWithText onClick={() => navigate(`/artwork/${props.data.contractAddress}`)}>
                     <ArtworkTileImage src={ContractIconImage}/>
