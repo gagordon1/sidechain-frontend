@@ -8,7 +8,6 @@ import ProfileIconImage from '../assets/profile_icon.png'
 import { useNavigate } from "react-router-dom"
 import PlayPause from './PlayPause'
 import { getSource, pauseAudio, playAudio, setSource } from "../controllers/audioController"
-import { useState } from "react"
 
 const feedArtworkTileStyle = {
     flexDirection : "column",

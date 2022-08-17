@@ -10,6 +10,7 @@ export const InputContainer = styled.div`
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     align-items : center;
+    animation : fade-in 1s
 `
 
 const TextInput = styled.input`
