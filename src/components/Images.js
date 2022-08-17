@@ -3,8 +3,9 @@ import styled from "styled-components"
 
 const CoverImageStyled = styled.img`
     object-fit : contain;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
 `
+
+
 
 export function CoverImage(props){
     return(

@@ -30,10 +30,19 @@ const TrackInfo = styled.div`
 
 export default function ArtworkTile(props){
 
+    const handleClick = () =>{
+        console.log(props.playing)
+        if (!props.playing){
+            props.setPlaying(true)
+        }else{
+            props.setPlaying(false)
+        }
+    }
+
     return (
         <TrackContentContainer>
             <ImageAndPlayPauseStyled>
-                <PlayPause playing={props.playing} setPlaying={props.setPlaying}/>
+                <PlayPause playing={props.playing} handleClick={handleClick}/>
                 <CoverImage width={"200px"} height={"200px"} 
                     src={props.data.imageLink? props.data.imageLink : null}/>
             </ImageAndPlayPauseStyled>

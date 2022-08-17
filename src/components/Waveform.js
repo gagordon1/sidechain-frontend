@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 import styled from 'styled-components';
 import { colors } from '../Theme';
+import { getAudio, setSource } from '../controllers/audioController';
 
 export const WaveformContainer = styled.div`
   display: flex;  
@@ -24,8 +25,8 @@ class Waveform extends Component {
     if(this.waveform){
         this.waveform.destroy()
     }
-    const track = document.querySelector("audio");
-    track.src = this.props.src
+    const track = getAudio()
+    setSource(this.props.src)
 
     this.waveform = WaveSurfer.create({
       barWidth: 3,
@@ -45,13 +46,12 @@ class Waveform extends Component {
 
   componentWillUnmount(){
     this.waveform.pause()
-    const track = document.querySelector("audio");
-    track.src = ""
+    setSource("")
     
   }
 
-  componentDidUpdate (newProps) {
-    if(newProps.playing){
+  componentDidUpdate () {
+    if(this.props.playing){
       this.waveform.play()
     }else{
       this.waveform.pause()

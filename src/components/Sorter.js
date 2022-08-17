@@ -4,21 +4,14 @@ import SortArrowImage from "../assets/down_arrow.png"
 const SorterContainer = styled.div`
     margin-left : auto;
 `
-const sortOptionMap = {
-    "timestamp_desc" : "Timestamp",
-    "timestamp_asc" : "Timestamp"
-}
-
-const directionMap = {
-    "timestamp_desc" : "down",
-    "timestamp_asc" : "up",
-}
-
 const SortArrow = styled.img`
     width : 20px;
     height : auto;
     transform : rotate(${props=>props.rotate}deg);
     margin-left : 10px;
+    &:hover{
+        cursor : pointer;
+    }
 
 `
 
