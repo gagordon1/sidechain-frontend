@@ -9,7 +9,7 @@ const Arrow = styled.img`
     height : auto;
     margin-left : auto;
     margin-right : auto;
-    animation: 4s ${bounce} infinite;
+    animation: 4s ${bounce} infinite, fade-in 4s;
     &:hover{
         cursor : pointer;
     }

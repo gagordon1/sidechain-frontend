@@ -6,6 +6,7 @@ import { getAddressFromExternalURL } from "../helperFunctions"
 import FeedArtworkTile  from "../components/FeedArtworkTile"
 import DownArrow from "../components/DownArrow"
 import SearchAndSort from "../components/SearchAndSort"
+import { setSource } from "../controllers/audioController"
 
 const FeedContainer = styled.div`
     display : grid;
@@ -32,6 +33,7 @@ export default function FeedPage(){
     const [data, setData] = useState([])
     const [sort, setSort] = useState("timestamp_desc")
     const [keyword, setKeyword] = useState("")
+    const [playing, setPlaying] = useState(-1)
 
     const defaultQuerySize = 9
 
@@ -53,8 +55,7 @@ export default function FeedPage(){
                 timestamp : chain.timestamp_added,
                 contractAddress : contractAddress,
                 name : chain.name,
-                id : chain.id,
-                playing : false
+                id : chain.id
             }
             newData.push(p)
         }
@@ -63,6 +64,11 @@ export default function FeedPage(){
 
     useEffect(()=>{
         loadData([])
+        return(() =>{
+            setPlaying(-1)
+            setSource("")
+        })
+
     },[sort])
 
 
@@ -75,7 +81,8 @@ export default function FeedPage(){
                     <FeedArtworkTile 
                         id={i} 
                         key={d.contractAddress}
-                        playing={d.playing} 
+                        playing={playing === i} 
+                        setPlaying={setPlaying}
                         data={d}/> )}
             </FeedContainer>
             <DownArrow handleClick={handleDownArrowClick}/>

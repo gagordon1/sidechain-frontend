@@ -7,6 +7,8 @@ import ContractIconImage from '../assets/contract_icon.png'
 import ProfileIconImage from '../assets/profile_icon.png'
 import { useNavigate } from "react-router-dom"
 import PlayPause from './PlayPause'
+import { getSource, pauseAudio, playAudio, setSource } from "../controllers/audioController"
+import { useState } from "react"
 
 const feedArtworkTileStyle = {
     flexDirection : "column",
@@ -45,6 +47,7 @@ const ImageAndPlayer = styled.div`
 const FeedImage = styled.img`
     width : ${props => props.width};
     height : ${props => props.height};
+    filter : brightness(${props => props.brightness}%);
     ${ImageAndPlayer}:hover &{
         filter : brightness(50%);
     }
@@ -58,16 +61,27 @@ const endStyling = {
 export default function FeedArtworkTile(props){
 
     const navigate = useNavigate()
-    const playing = false;
-    const handleTogglePlay = () =>{
 
+    const handleTogglePlay = () =>{
+        if (props.playing){
+            props.setPlaying(-1)
+            pauseAudio()
+        }else{
+            props.setPlaying(props.id)
+            if (getSource() !== props.data.audioLink){
+                setSource(props.data.audioLink)
+            }
+            playAudio()
+        }
+        
     }
 
     return (
         <InputContainer style={feedArtworkTileStyle} width={"250px"} height ={"320px"}>
             <ImageAndPlayer>
-                <FeedImage height={"250px"} width={"250px"} src={props.data.imageLink}/>
-                <PlayPause handleClick={handleTogglePlay} playing={playing}/>
+                <FeedImage height={"250px"} width={"250px"} brightness={props.playing? 50 : 100}
+                    src={props.data.imageLink}/>
+                <PlayPause handleClick={handleTogglePlay} playing={props.playing}/>
             </ImageAndPlayer>
             <TrackInfo>
                 <IconWithText onClick={() => navigate(`/artwork/${props.data.contractAddress}`)}>
