@@ -47,14 +47,23 @@ export default function ArtworkPage(props){
     const [loading, setLoading] = useState("")
 
     const handleDownloadProjectFiles = async () =>{
-        axios.get(data.projectFilesLink)
+
+        axios.get(data.projectFilesLink, 
+            {   responseType: 'arraybuffer',
+                headers: {
+                'Content-Type': 'application/json'
+                }
+            })
         .then((response) => {
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'file.zip'); //or any other extension
+            link.setAttribute('download', 'project_files.zip'); //or any other extension
             document.body.appendChild(link);
             link.click();
+        }).catch(error =>{
+            console.log(error)
+            alert("Could not download project files")
         });
         
     }

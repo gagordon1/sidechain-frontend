@@ -63,7 +63,7 @@ export default function OwnershipStructure(props){
             </ParentContainer>
             <ChildContainer>
                 {data.parents.map(parent =>
-                    <div key={props.contractAddress}>
+                    <div key={parent}>
                         <OwnershipStructure contractAddress={parent}/>
                         <Xarrow
                             start = {`ownershipImage${parent}`}
