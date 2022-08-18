@@ -60,7 +60,7 @@ export async function getSidechains(sort, keyword, limit, offset){
  * @param str account wallet address
  */
 export async function getDownloadedContent(account){
-    const items = await getSidechains("timestamp_desc", "", 10, 0)
+    const items = await getSidechains("timestamp_desc", "", 100, 0)
     console.log(items)
     return items.map(
         obj => {return {
