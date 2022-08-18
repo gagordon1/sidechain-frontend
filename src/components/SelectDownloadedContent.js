@@ -8,6 +8,8 @@ const SelectDownloadedStemsContainer = styled.div`
     align-items : center;
     height : 100px;
     width : 100%;
+    margin-top : 40px;
+    margin-bottom : 40px;
 `
 
 /**

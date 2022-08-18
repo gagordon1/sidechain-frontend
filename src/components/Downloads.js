@@ -12,18 +12,22 @@ const DownloadContainer = styled.div`
 
 const Download = styled.div`
     display : flex;
-    width : 100px;
-    height : 100px;
+    width : 150px;
+    height : 180px;
     align-items : center;
     justify-content : center;
     position : relative;
+    animation : fade-in 1s;
+    &:hover{
+        cursor : pointer;
+    }
 `
 
 
 const Check = styled.img`
     position : absolute;
-    width : 30px;
-    height : 30px;
+    width : 50px;
+    height : 50px;
     
 `
 
@@ -39,8 +43,8 @@ export default function Downloads(props){
                     <CoverImage
                         src={obj.image}
                         brightness={obj.selected? 50 : 100}
-                        width={"100px"}
-                        height={"100px"}
+                        width={"150px"}
+                        height={"150px"}
                         />
                     {obj.selected? <Check src={CheckImage}/> : null}
                 </Download>

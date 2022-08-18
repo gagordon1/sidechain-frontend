@@ -42,9 +42,9 @@ export default function ArtworkTile(props){
     return (
         <TrackContentContainer>
             <ImageAndPlayPauseStyled>
-                <PlayPause playing={props.playing} handleClick={handleClick}/>
                 <CoverImage width={"200px"} height={"200px"} 
                     src={props.data.imageLink? props.data.imageLink : null}/>
+                <PlayPause playing={props.playing} handleClick={handleClick}/>
             </ImageAndPlayPauseStyled>
             {props.data.audioLink? <Waveform id={0} style={{"position" : "relative"}} playing={props.playing} src={props.data.audioLink}/> : null}
             <TrackInfo>

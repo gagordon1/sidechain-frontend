@@ -32,7 +32,7 @@ const LogoContainer = styled.div`
 const ProfileIcon = styled.img`
     height : 30px;
     width : auto;
-    margin-right : 20px;
+    filter : drop-shadow(2px 2px 2px rgba(0,0,0,.25));
     &:hover{
         cursor : pointer;
     }
@@ -40,6 +40,7 @@ const ProfileIcon = styled.img`
 const RightSide = styled.div`
     display : flex;
     justify-content : space-between;
+    gap : 30px;
     align-items : center;
 `
 
