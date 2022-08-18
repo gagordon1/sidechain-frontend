@@ -47,11 +47,8 @@ export default function ArtworkPage(props){
     const [loading, setLoading] = useState("")
 
     const handleDownloadProjectFiles = async () =>{
-        axios({
-            url: data.projectFilesLink, 
-            method: 'GET',
-            responseType: 'blob'
-        }).then((response) => {
+        axios.get(data.projectFilesLink)
+        .then((response) => {
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
