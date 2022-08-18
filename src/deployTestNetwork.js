@@ -21,7 +21,9 @@ const parentMap = {
     "Somebody-That-I-Used-To-Know" : ["Seville"],
     "Somebody-That-I-Used-To-Know-Remix" : ["Somebody-That-I-Used-To-Know"],
     "Tondoho-Mba" : [],
-    "Tondo" : ["Tondoho-Mba"]
+    "Tondo" : ["Tondoho-Mba"],
+    "Walking-On-A-Dream": [],
+    "Yes-Indeed": []
 }
 
 //maps songs to their REVs
@@ -43,7 +45,9 @@ const revMap = {
     "Somebody-That-I-Used-To-Know" : 40,
     "Somebody-That-I-Used-To-Know-Remix" : 5,
     "Tondoho-Mba" : 40,
-    "Tondo" : 20
+    "Tondo" : 20,
+    "Walking-On-A-Dream": 30,
+    "Yes-Indeed": 30
 }
 
 //maps songs to their contract addressess (dynamically created)
@@ -69,7 +73,9 @@ const deployOrder =[
     "Somebody-That-I-Used-To-Know",
     "Somebody-That-I-Used-To-Know-Remix",
     "Tondoho-Mba",
-    "Tondo"
+    "Tondo",
+    "Walking-On-A-Dream",
+    "Yes-Indeed"
 ]
 
 const deployTestNetwork = async(provider) =>{

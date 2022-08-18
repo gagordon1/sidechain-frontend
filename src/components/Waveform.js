@@ -3,6 +3,7 @@ import WaveSurfer from 'wavesurfer.js';
 import styled from 'styled-components';
 import { colors } from '../Theme';
 import { getAudio, setSource } from '../controllers/audioController';
+import { Audio } from  'react-loader-spinner'
 
 export const WaveformContainer = styled.div`
   display: flex;  
@@ -11,6 +12,7 @@ export const WaveformContainer = styled.div`
   background: transparent;
   width : 95%;
   justify-self : center;
+  justify-content : center;
 `;
 
 export const Wave = styled.div`
@@ -19,7 +21,38 @@ export const Wave = styled.div`
   justify-content : center;
 `;
 
-class Waveform extends Component {  
+// const AudioLLoaderStyled = styled.div`
+//   position : absolute;
+//   display 
+// `
+
+const StyledAudio = () => 
+  <Audio
+    wrapperStyle={{margin : "none", padding : "none"}}
+    height="80"
+    width="80"
+    radius="9"
+    color={colors.altGray1}
+    ariaLabel='three-dots-loading'   
+    /> 
+
+function AudioLoader(){
+  return(
+    <span style={{position : "absolute", display : "flex", gap : "0px"}}>
+      <StyledAudio/>
+      <StyledAudio/>
+      <StyledAudio/>
+      <StyledAudio/>
+      <StyledAudio/>
+      <StyledAudio/>
+    </span>
+  )
+}
+class Waveform extends Component { 
+  
+  state = {
+    loading : false
+  }
 
   componentDidMount() {
     if(this.waveform){
@@ -38,10 +71,16 @@ class Waveform extends Component {
       responsive: true,
       waveColor: colors.altGray1,
       cursorColor: 'transparent',
-      normalize : true
+      normalize : true,
+      barMinHeight : 3
     });
 
+    this.setState({loading : true})
     this.waveform.load(track);
+
+    this.waveform.on("ready", () =>{
+      this.setState({loading : false})
+    })
   };
 
   componentWillUnmount(){
@@ -63,6 +102,8 @@ class Waveform extends Component {
     return (
       <WaveformContainer>
         <Wave style={{alignItems : "center"}} id={`waveform${this.props.id}`} />
+        {this.state.loading? 
+         <AudioLoader/> :  null}
       </WaveformContainer>
     );
   }

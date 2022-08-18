@@ -3,7 +3,7 @@ import styled from "styled-components"
 import ArtworkTile from '../components/ArtworkTile'
 import Loader from '../components/Loader'
 import { getMetadata, getOnChainData } from "../controllers/blockchainController"
-import { Heading4, Heading3, InfoText3 } from '../components/TextComponents'
+import { Heading3 } from '../components/TextComponents'
 import SubmitButton from '../components/SubmitButton'
 import HorizontalArtworkContainer from '../components/HorizontalArtworkContainer'
 import axios from 'axios'
@@ -107,11 +107,11 @@ export default function ArtworkPage(props){
                             <ArtworkTile id={0} playing={playing} setPlaying={setPlaying} data={data}/> 
                             <Addresses>
                                 <div>
-                                    <Heading4>Contract Address: </Heading4>
+                                    <Heading3>Contract Address: </Heading3>
                                     <p>{contractAddress}</p>
                                 </div>
                                 <div>
-                                    <Heading4>Creator Address: </Heading4>
+                                    <Heading3>Creator Address: </Heading3>
                                     <p>{data.creator}</p>
                                 </div>
                                 {data.projectFilesLink? <SubmitButton text={"Download Project Files"} onClick={handleDownloadProjectFiles}/> : null}
@@ -120,13 +120,15 @@ export default function ArtworkPage(props){
                             <ThirdGrid>
                                 <Heading3 style={{textAlign:"left"}}>Description</Heading3>
                                 <Heading3 style={{textAlign:"left"}}>Sampled</Heading3>
-                                <Heading3 style={{textAlign:"left"}}>Ownership</Heading3>
+                                <Heading3 style={{textAlign:"left"}}>REV Tree</Heading3>
                             </ThirdGrid>
                             
                             <ThirdGrid>
-                                <InfoText3 style={{textAlign:"left"}}>{data.description}</InfoText3>
+                                <p style={{padding : "5px", textAlign:"left"}}>{data.description}</p>
                                 <HorizontalArtworkContainer artwork={data.parents}/>
-                                <OwnershipStructure width={"100%"} contractAddress={contractAddress} />
+                                <OwnershipStructure
+                                    width={"100%"} 
+                                    contractAddress={contractAddress} />
                             </ThirdGrid>
                         </ArtworkPageContainer>
                         

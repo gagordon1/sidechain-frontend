@@ -36,6 +36,8 @@ export default function OwnershipStructure(props){
         rev : ""
     })
 
+    
+
 
     useEffect(() => {
         const loadData = async() =>{
@@ -75,6 +77,7 @@ export default function OwnershipStructure(props){
                     </div>
                         
                     )
+                    
                 }
                 
             </ChildContainer>
