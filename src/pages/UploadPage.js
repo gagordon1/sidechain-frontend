@@ -3,12 +3,13 @@ import { TextInputStyled, LongTextInputStyled } from "../components/InputContain
 import { UploadArtwork, UploadProjectFiles, UploadImageFile} from "../components/MediaInput"
 import { Heading3 } from '../components/TextComponents'
 import SelectDownloadedContent from '../components/SelectDownloadedContent'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { uploadMetadata, updateMetadataWithExternalURL } from "../controllers/backendController"
 import { deploySidechainEth} from "../controllers/blockchainController"
 import SubmitButton from '../components/SubmitButton'
 import Loader from "../components/Loader"
 import { useNavigate } from "react-router-dom";
+import { getDownloadedContent } from "../controllers/backendController"
 
 
 const InputGrid = styled.div`
@@ -58,11 +59,19 @@ export default function UploadPage(props){
     const [loading, setLoading] = useState("")
     const [REV, setREV] = useState(0) //default is 0
     const [creatorAddress, setCreatorAddress] = useState("") //default is connected wallet
-    const [parents, setParents] = useState([])
+    const [data, setData] = useState([])
+    
     const navigate = useNavigate()
 
-    const getDownloadedContent = () =>{
-        return []
+    const handleSetSelected = (address) => {
+        const newData = [...data]
+        for (const entry of newData){
+            if(entry.address === address){
+                entry.selected = !entry.selected
+                break
+            }
+        }
+        setData(newData)
     }
 
 
@@ -92,7 +101,7 @@ export default function UploadPage(props){
         setLoading("Deploying Contract...")
         try {
             const address = await deploySidechainEth(REV, creatorAddress? creatorAddress :props.account, 
-                parents, baseURI)
+                data.filter(obj => obj.selected).map(obj => obj.address), baseURI)
             try{
                 await updateMetadataWithExternalURL(baseURI +"-1", address)
             }catch(error){
@@ -111,6 +120,16 @@ export default function UploadPage(props){
         
     }
 
+    useEffect(()=>{
+        const loadData = async() =>{
+            const newData = await getDownloadedContent(props.account)
+            setData(newData)
+        }
+
+        loadData()
+
+    }, [])
+
     
     return (
         <div key={"uploadPage"}>
@@ -125,7 +144,7 @@ export default function UploadPage(props){
                         <TextInputStyled width={"250px"} height={"45px"} 
                             onChange={(e) => setCreatorAddress(e.target.value)} placeholder={"Creator Address"}/>
                         <Heading3 style={{"alignSelf" : "start"}}>Select Remixed Content From Downloads</Heading3>
-                        <SelectDownloadedContent setParents={setParents} downloadedContent={getDownloadedContent()}/>  
+                        <SelectDownloadedContent data={data} handleSetSelected={handleSetSelected}/>  
                         <SubmitButton text={"Deploy Contract"} onClick={handleDeployContract}/>
                     </DeployContractContainer>
 

@@ -1,10 +1,13 @@
 import {Heading2} from './TextComponents'
 import styled from 'styled-components'
+import { useState } from 'react'
+import Downloads from '../components/Downloads'
 
 const SelectDownloadedStemsContainer = styled.div`
     display : flex;
     align-items : center;
     height : 100px;
+    width : 100%;
 `
 
 /**
@@ -13,11 +16,13 @@ const SelectDownloadedStemsContainer = styled.div`
  * @returns Select box of remixable content
  */
 export default function SelectDownloadedContent(props){
+
+    
     return(
         <SelectDownloadedStemsContainer>
-            {(props.downloadedContent.length  === 0)? <Heading2>No content downloaded</Heading2>
+            {(props.data.length  === 0)? <Heading2>No content downloaded</Heading2>
             :
-            <span></span>
+            <Downloads data={props.data} handleSetSelected={props.handleSetSelected} />
             }
         </SelectDownloadedStemsContainer>
     )

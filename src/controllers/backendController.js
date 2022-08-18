@@ -1,5 +1,6 @@
 import axios from "axios";
 import {SIDECHAIN_UPLOAD_ENDPOINT, SIDECHAIN_FEED_ENDPOINT} from '../config.js'
+import {getAddressFromExternalURL} from '../helperFunctions'
 
 /**
  * Uploads metadata from a formData object to the backend server
@@ -51,4 +52,22 @@ export async function getSidechains(sort, keyword, limit, offset){
         }
     } )
     return response.data.items
+}
+
+/**
+ * Given a wallet address return contract addresses where theyve downloaded project files
+ * TBU TBU TBU
+ * @param str account wallet address
+ */
+export async function getDownloadedContent(account){
+    const items = await getSidechains("timestamp_desc", "", 10, 0)
+    console.log(items)
+    return items.map(
+        obj => {return {
+                address : getAddressFromExternalURL(obj.external_url),
+                image : obj.image,
+                selected : false
+            }
+        }
+    )
 }
