@@ -13,6 +13,7 @@ export const WaveformContainer = styled.div`
   width : 95%;
   justify-self : center;
   justify-content : center;
+  animation : fade-in 1s;
 `;
 
 export const Wave = styled.div`

@@ -124,7 +124,7 @@ export default function ArtworkPage(props){
                             </ThirdGrid>
                             
                             <ThirdGrid>
-                                <p style={{padding : "5px", textAlign:"left"}}>{data.description}</p>
+                                <p style={{padding : "2px", textAlign:"left"}}>{data.description}</p>
                                 <HorizontalArtworkContainer artwork={data.parents}/>
                                 <OwnershipStructure
                                     width={"100%"} 

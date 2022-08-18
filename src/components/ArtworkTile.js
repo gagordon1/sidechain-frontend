@@ -28,6 +28,15 @@ const TrackInfo = styled.div`
     gap : 3px;
 `
 
+const TileImage= styled.img`
+    width : ${props => props.width};
+    height : ${props => props.height};
+    filter : brightness(${props=>props.brightness}%);
+    ${ImageAndPlayPauseStyled}:hover &{
+        filter : brightness(50%);
+    }
+`
+
 export default function ArtworkTile(props){
 
     const handleClick = () =>{
@@ -42,7 +51,7 @@ export default function ArtworkTile(props){
     return (
         <TrackContentContainer>
             <ImageAndPlayPauseStyled>
-                <CoverImage width={"200px"} height={"200px"} 
+                <TileImage width={"200px"} height={"200px"} brightness={props.playing? 50 : 100}
                     src={props.data.imageLink? props.data.imageLink : null}/>
                 <PlayPause playing={props.playing} handleClick={handleClick}/>
             </ImageAndPlayPauseStyled>
