@@ -5,7 +5,7 @@ import { Heading3 } from '../components/TextComponents'
 import SelectDownloadedContent from '../components/SelectDownloadedContent'
 import {useEffect, useState} from 'react'
 import { uploadMetadata, updateMetadataWithExternalURL } from "../controllers/backendController"
-import { deploySidechainEth} from "../controllers/blockchainController"
+import { deploySidechain} from "../controllers/blockchainController"
 import SubmitButton from '../components/SubmitButton'
 import Loader from "../components/Loader"
 import { useNavigate } from "react-router-dom";
@@ -100,7 +100,7 @@ export default function UploadPage(props){
     const handleDeployContract = async () =>{
         setLoading("Deploying Contract...")
         try {
-            const address = await deploySidechainEth(REV, creatorAddress? creatorAddress :props.account, 
+            const address = await deploySidechain(REV, creatorAddress? creatorAddress :props.account, 
                 data.filter(obj => obj.selected).map(obj => obj.address), baseURI)
             try{
                 await updateMetadataWithExternalURL(baseURI +"-1", address)

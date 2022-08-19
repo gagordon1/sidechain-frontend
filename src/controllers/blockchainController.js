@@ -16,7 +16,7 @@ export const getProvider = () =>{
  * 
  * 
  */
-export async function deploySidechainEth(REV, creatorAddress, parents, baseURI){
+export async function deploySidechain(REV, creatorAddress, parents, baseURI){
     var json = require('../SidechainERC721.json'); 
     const abi = json["abi"]
     const byteCode = json["bytecode"]
