@@ -29,7 +29,7 @@
     "eject": "react-scripts eject",
     "compile": "npx hardhat compile",
     "serve": "npx hardhat node",
-    "deploy": "npx hardhat run scripts/deploy.js --network localhost"
+    "testNetwork" : "sleep 5 node src/deployTestNetwork.js"
   },
   "eslintConfig": {
     "extends": [

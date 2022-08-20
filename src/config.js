@@ -1,6 +1,6 @@
 const DEVELOPMENT = true
 
-const BACKEND = DEVELOPMENT ? "http://localhost:8080" : ""
+export const BACKEND = "http://18.212.228.207:8080"
 
 export const FRONTEND = DEVELOPMENT ? "http://localhost:3000" : ""
 

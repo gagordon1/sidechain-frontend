@@ -1,4 +1,3 @@
-const { toBeInTheDOM } = require('@testing-library/jest-dom/dist/matchers');
 const ethers = require('ethers');
 const axios = require('axios')
 
@@ -109,6 +108,6 @@ const deployTestNetwork = async(provider) =>{
     console.log(addressMap)
     
 }
-BACKEND = "http://localhost:8080"
+const BACKEND = "http://18.212.228.207:8080"
 const provider = new ethers.providers.JsonRpcProvider();
 deployTestNetwork(provider)

@@ -25,6 +25,7 @@ function App() {
     <div className="App">
       <RoutesContainer>
         <Router className="Router">
+          {account}
           <Navbar 
             account={account}
             setAccount={setAccount}/>
