@@ -1,8 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/contracts/ISidechainERC721.sol": {
-      "lastModificationDate": 1660065751033,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/contracts/ISidechainERC721.sol": {
+      "lastModificationDate": 1661017713864,
       "contentHash": "aad0784ef712e134637d1e2390e73a7e",
       "sourceName": "contracts/ISidechainERC721.sol",
       "solcConfig": {
@@ -38,8 +38,8 @@
         "ISidechain"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol": {
-      "lastModificationDate": 1660076588743,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol": {
+      "lastModificationDate": 1661104794108,
       "contentHash": "f4dd06783f321aa26179bc2b6e361c29",
       "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol",
       "solcConfig": {
@@ -75,8 +75,8 @@
         "IERC721Enumerable"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol": {
-      "lastModificationDate": 1660076588738,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol": {
+      "lastModificationDate": 1661104794107,
       "contentHash": "ec99d946db3685a3630554aa6055bd7f",
       "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721.sol",
       "solcConfig": {
@@ -112,8 +112,8 @@
         "IERC721"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
-      "lastModificationDate": 1660076588690,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+      "lastModificationDate": 1661104794102,
       "contentHash": "03e6768535ac4da0e9756f1d8a4a018a",
       "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
       "solcConfig": {
@@ -147,8 +147,8 @@
         "IERC165"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol": {
-      "lastModificationDate": 1660076588475,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol": {
+      "lastModificationDate": 1661104794085,
       "contentHash": "88095889e59d16821879a8083f906503",
       "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
       "solcConfig": {
@@ -185,8 +185,8 @@
         "ERC721Enumerable"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol": {
-      "lastModificationDate": 1660076588472,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol": {
+      "lastModificationDate": 1661104794084,
       "contentHash": "79ff1a7eb801a525aa315fb7a679eede",
       "sourceName": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
       "solcConfig": {
@@ -228,8 +228,8 @@
         "ERC721"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
-      "lastModificationDate": 1660076588756,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+      "lastModificationDate": 1661104794110,
       "contentHash": "c22d4395e33763de693fd440c6fd10e1",
       "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
       "solcConfig": {
@@ -263,8 +263,8 @@
         "IERC721Receiver"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
-      "lastModificationDate": 1660076588749,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
+      "lastModificationDate": 1661104794108,
       "contentHash": "efbc0d15b80a74e34dbe8da0f3e879bb",
       "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
       "solcConfig": {
@@ -300,8 +300,8 @@
         "IERC721Metadata"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/Address.sol": {
-      "lastModificationDate": 1660076587842,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/Address.sol": {
+      "lastModificationDate": 1661104794065,
       "contentHash": "c476b3895a94798b88a4bb97399e6dfe",
       "sourceName": "@openzeppelin/contracts/utils/Address.sol",
       "solcConfig": {
@@ -335,8 +335,8 @@
         "Address"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1660076587918,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1661104794067,
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -370,8 +370,8 @@
         "Context"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1660076588987,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
+      "lastModificationDate": 1661104794122,
       "contentHash": "cf46906c4035f51639a22265066a9e78",
       "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
       "solcConfig": {
@@ -405,8 +405,8 @@
         "Strings"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
-      "lastModificationDate": 1660076588337,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
+      "lastModificationDate": 1661104794078,
       "contentHash": "0e7db055ce108f9da7bb6686a00287c0",
       "sourceName": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
       "solcConfig": {
@@ -442,8 +442,8 @@
         "ERC165"
       ]
     },
-    "/Users/garrettgordon/Desktop/Personal Projects/sidechain-frontend/contracts/SidechainERC721.sol": {
-      "lastModificationDate": 1660188448710,
+    "/Users/garrettgordon/Sidechain/sidechain-frontend/contracts/SidechainERC721.sol": {
+      "lastModificationDate": 1661017713864,
       "contentHash": "090a71e5ffa7abf4780273f053667377",
       "sourceName": "contracts/SidechainERC721.sol",
       "solcConfig": {

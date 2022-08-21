@@ -61,7 +61,6 @@ export async function getSidechains(sort, keyword, limit, offset){
  */
 export async function getDownloadedContent(account){
     const items = await getSidechains("timestamp_desc", "", 100, 0)
-    console.log(items)
     return items.map(
         obj => {return {
                 address : getAddressFromExternalURL(obj.external_url),

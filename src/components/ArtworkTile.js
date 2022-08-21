@@ -40,7 +40,6 @@ const TileImage= styled.img`
 export default function ArtworkTile(props){
 
     const handleClick = () =>{
-        console.log(props.playing)
         if (!props.playing){
             props.setPlaying(true)
         }else{
