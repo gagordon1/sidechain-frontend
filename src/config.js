@@ -1,6 +1,6 @@
 const DEVELOPMENT = true
 
-export const BACKEND = "http://18.212.228.207:8080"
+export const BACKEND = "https://sidechain-backend.herokuapp.com"
 
 export const FRONTEND = DEVELOPMENT ? "http://localhost:3000" : ""
 
