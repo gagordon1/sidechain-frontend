@@ -1,4 +1,4 @@
-const DEVELOPMENT = true
+const DEVELOPMENT = false
 
 export const BACKEND = "https://sidechain-backend.herokuapp.com"
 
