@@ -3,7 +3,9 @@
 
 
 - Running on the Rinkeby Ethereum Test Network, you need to have the MetaMask plugin installed and connect to the rinkeby test network to view the test files I've loaded the network with.
-- [demo](https://youtu.be/BAvAvJysfm4)
+- [Demo](https://youtu.be/BAvAvJysfm4)
+- [Deployed Link](https://www.side-chain.xyz/)
+- [Metadata Server Code] (https://github.com/gagordon1/sidechain-backend)
 
 ## Features
 
