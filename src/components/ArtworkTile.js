@@ -1,6 +1,5 @@
 
 import styled from "styled-components"
-import { CoverImage } from "../components/Images"
 import Waveform from "../components/Waveform"
 import PlayPause from "../components/PlayPause"
 import { InfoText2 } from "../components/TextComponents"

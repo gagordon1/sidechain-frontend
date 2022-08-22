@@ -1,6 +1,5 @@
 import {Heading2} from './TextComponents'
 import styled from 'styled-components'
-import { useState } from 'react'
 import Downloads from '../components/Downloads'
 
 const SelectDownloadedStemsContainer = styled.div`

@@ -7,6 +7,7 @@ import FeedArtworkTile  from "../components/FeedArtworkTile"
 import DownArrow from "../components/DownArrow"
 import SearchAndSort from "../components/SearchAndSort"
 import { setSource } from "../controllers/audioController"
+import { Heading2 } from "../components/TextComponents"
 
 const FeedContainer = styled.div`
     display : grid;
@@ -76,16 +77,21 @@ export default function FeedPage(){
         <PageContainer key={"feedPage"}>
             <SearchAndSort keyword={keyword} setKeyword={setKeyword} 
                 sort={sort} setSort={setSort}/>
-            <FeedContainer>
-                {data.map((d, i) => 
-                    <FeedArtworkTile 
-                        id={i} 
-                        key={d.contractAddress}
-                        playing={playing === i} 
-                        setPlaying={setPlaying}
-                        data={d}/> )}
-            </FeedContainer>
-            <DownArrow handleClick={handleDownArrowClick}/>
+            {data.length === 0? 
+                <Heading2>No projects found. Connect to the Rinkeby ETH test net using MetaMask to view project feed</Heading2>
+                :
+                <FeedContainer>
+                    {data.map((d, i) => 
+                        <FeedArtworkTile 
+                            id={i} 
+                            key={d.contractAddress}
+                            playing={playing === i} 
+                            setPlaying={setPlaying}
+                            data={d}/> )}
+                </FeedContainer>
+            }
+            {(data.length % defaultQuerySize === 0 && data.length > 0)? 
+                <DownArrow handleClick={handleDownArrowClick}/>: null}
         </PageContainer>
         
     )
