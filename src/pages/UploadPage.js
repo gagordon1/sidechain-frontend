@@ -56,6 +56,7 @@ export default function UploadPage(props){
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [baseURI, setBaseURI] = useState("")
+    const [authToken, setAuthToken] = useState("")
     const [loading, setLoading] = useState("")
     const [REV, setREV] = useState(0) //default is 0
     const [creatorAddress, setCreatorAddress] = useState("") //default is connected wallet
@@ -87,7 +88,8 @@ export default function UploadPage(props){
         
         setLoading("Uploading Metadata...")
         try {
-            const uri = await uploadMetadata(formData)
+            const [uri, authToken] = (await uploadMetadata(formData)).split("%")
+            setAuthToken(authToken)
             setBaseURI(uri)
         } catch (error) {
             console.log(error)
@@ -103,7 +105,7 @@ export default function UploadPage(props){
             const address = await deploySidechain(REV, creatorAddress? creatorAddress :props.account, 
                 data.filter(obj => obj.selected).map(obj => obj.address), baseURI)
             try{
-                await updateMetadataWithExternalURL(baseURI +"-1", address)
+                await updateMetadataWithExternalURL(baseURI +"-1", address, authToken)
             }catch(error){
                 console.log(error)
                 alert("Contract deployed but error updating metadata.")
@@ -136,6 +138,7 @@ export default function UploadPage(props){
         {
             loading? <Loader message={loading}/> :
             <UploadPageContainer>
+                {baseURI}
                 {baseURI? 
                     <DeployContractContainer>
                         <Heading3 style={{"alignSelf" : "start"}}>Ownership Details</Heading3>

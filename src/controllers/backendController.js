@@ -11,7 +11,7 @@ import {getAddressFromExternalURL} from '../helperFunctions'
  *      name : str
  *      description : str
  * @param {*} formData 
- * @returns str : link to metadata
+ * @returns str : {link to metadata}%{authToken}
  */
 export async function uploadMetadata(formData){
     const config = {     
@@ -27,11 +27,11 @@ export async function uploadMetadata(formData){
  * @param str update metadata endpoint
  * @param str contractAddress 
  */
-export async function updateMetadataWithExternalURL(baseURI, contractAddress){
+export async function updateMetadataWithExternalURL(baseURI, contractAddress, authToken){
     const config = {     
         headers: { 'content-type': 'text/plain' }
     }
-    return await axios.post(baseURI,contractAddress, config)
+    return await axios.post(baseURI,contractAddress + "%" + authToken, config)
 }
 
 /**
