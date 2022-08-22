@@ -138,7 +138,6 @@ export default function UploadPage(props){
         {
             loading? <Loader message={loading}/> :
             <UploadPageContainer>
-                {baseURI}
                 {baseURI? 
                     <DeployContractContainer>
                         <Heading3 style={{"alignSelf" : "start"}}>Ownership Details</Heading3>
