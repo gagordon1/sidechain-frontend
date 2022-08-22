@@ -50,9 +50,8 @@ import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol';
     supply = totalSupply();
     //mint remaining equity to creator
     for(uint16 j; j < MAX_OWNERSHIP_VALUE - supply; j++){
-          _safeMint( _creator, supply + j );
-      }
-    // this is too slow I think we need to switch to ERC20
+        _safeMint( _creator, supply + j );
+    }
     emit SidechainCreated(address(this));
   }
 
