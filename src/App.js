@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import FeedPage from './pages/FeedPage';
 import UploadPage from './pages/UploadPage'
 import ArtworkPage from './pages/ArtworkPage';
+import AboutPage from './pages/AboutPage';
 import Navbar from './components/Navbar';
 import { Heading3 } from './components/TextComponents';
 import {useState} from 'react'
@@ -30,6 +31,7 @@ function App() {
             setAccount={setAccount}/>
           <Routes>
             <Route path="/" element={<FeedPage/>}/>
+            <Route path="/about" element={<AboutPage/>}/>
             <Route path="/artwork/:contractAddress" element={<ArtworkPage/>}/>
             <Route path="/upload" element={
               <div>

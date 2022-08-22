@@ -18,7 +18,8 @@ export const renderTimeDelta = (timestamp) => {
 
 export const getAddressFromExternalURL = (externalURL) =>{
     var re = new RegExp(FRONTEND +"/artwork/", 'g');
-    return externalURL.replace(re, "")
+    const address = externalURL.replace(re, "")
+    return address
 }
 
 export const randomGen= ()=>{
