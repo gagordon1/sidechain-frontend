@@ -8,6 +8,7 @@ import DownArrow from "../components/DownArrow"
 import SearchAndSort from "../components/SearchAndSort"
 import { setSource } from "../controllers/audioController"
 import { Heading2 } from "../components/TextComponents"
+import Loader from "../components/Loader"
 
 const FeedContainer = styled.div`
     display : grid;
@@ -35,6 +36,7 @@ export default function FeedPage(){
     const [sort, setSort] = useState("timestamp_desc")
     const [keyword, setKeyword] = useState("")
     const [playing, setPlaying] = useState(-1)
+    const [loading, setLoading] = useState(false)
 
     const defaultQuerySize = 9
 
@@ -45,22 +47,30 @@ export default function FeedPage(){
     const loadData = async(pastData) =>{
         const sidechains = await getSidechains(sort,keyword,defaultQuerySize,pastData.length)
         const newData = [...pastData]
-        for(const chain of sidechains){
-            const contractAddress = getAddressFromExternalURL(chain.external_url)
-            const onChainData = await getOnChainData(contractAddress)
-            const p = {
-                imageLink : chain.image,
-                audioLink : chain.artwork,
-                creator : onChainData.creator,
-                rev : onChainData.rev,
-                timestamp : chain.timestamp_added,
-                contractAddress : contractAddress,
-                name : chain.name,
-                id : chain.id
+        setLoading(true)
+        try {
+            for(const chain of sidechains){
+                const contractAddress = getAddressFromExternalURL(chain.external_url)
+                const onChainData = await getOnChainData(contractAddress)
+                const p = {
+                    imageLink : chain.image,
+                    audioLink : chain.artwork,
+                    creator : onChainData.creator,
+                    rev : onChainData.rev,
+                    timestamp : chain.timestamp_added,
+                    contractAddress : contractAddress,
+                    name : chain.name,
+                    id : chain.id
+                }
+                newData.push(p)
             }
-            newData.push(p)
+            setData(newData)
+            
+        } catch (error) {
+            console.log(error)
         }
-        setData(newData)
+        setLoading(false)
+        
     }
 
     useEffect(()=>{
@@ -74,25 +84,30 @@ export default function FeedPage(){
 
 
     return (
-        <PageContainer key={"feedPage"}>
-            <SearchAndSort keyword={keyword} setKeyword={setKeyword} 
-                sort={sort} setSort={setSort}/>
-            {data.length === 0? 
-                <Heading2>No projects found. Connect to the Rinkeby ETH test net using MetaMask to view project feed</Heading2>
-                :
-                <FeedContainer>
-                    {data.map((d, i) => 
-                        <FeedArtworkTile 
-                            id={i} 
-                            key={d.contractAddress}
-                            playing={playing === i} 
-                            setPlaying={setPlaying}
-                            data={d}/> )}
-                </FeedContainer>
+       <div>
+            {loading? <Loader/> :
+                <PageContainer key={"feedPage"}>
+                    <SearchAndSort keyword={keyword} setKeyword={setKeyword} 
+                    sort={sort} setSort={setSort}/>
+                    {data.length === 0? 
+                        <Heading2>No projects found. Connect to the Rinkeby ETH test net using MetaMask to view project feed</Heading2>
+                        :
+                        <FeedContainer>
+                            {data.map((d, i) => 
+                                <FeedArtworkTile 
+                                    id={i} 
+                                    key={d.contractAddress}
+                                    playing={playing === i} 
+                                    setPlaying={setPlaying}
+                                    data={d}/> )}
+                        </FeedContainer>
+                    }
+                    {(data.length % defaultQuerySize === 0 && data.length > 0)? 
+                        <DownArrow handleClick={handleDownArrowClick}/>: null}
+                </PageContainer>
+                
             }
-            {(data.length % defaultQuerySize === 0 && data.length > 0)? 
-                <DownArrow handleClick={handleDownArrowClick}/>: null}
-        </PageContainer>
+        </div>
         
     )
 
