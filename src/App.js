@@ -11,7 +11,7 @@ import UploadPage from './pages/UploadPage'
 import ArtworkPage from './pages/ArtworkPage';
 import AboutPage from './pages/AboutPage';
 import Navbar from './components/Navbar';
-import { Heading3 } from './components/TextComponents';
+import { Heading2 } from './components/TextComponents';
 import {useState} from 'react'
 
 const RoutesContainer = styled.div`
@@ -40,7 +40,7 @@ function App() {
                   account={account}
                 />
                 :
-                <Heading3>Connect wallet to upload to sidechain</Heading3>
+                <Heading2>Connect wallet to upload to sidechain</Heading2>
               }
               </div>
               
