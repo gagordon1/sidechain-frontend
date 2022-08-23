@@ -1,7 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 require('dotenv').config();
 
-const { API_URL } = process.env;
+const { RINKEBY_API_URL, GOERLI_API_URL } = process.env;
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -12,7 +12,10 @@ module.exports = {
       chainId: 1337
     },
     rinkeby: {
-      url: API_URL
+      url: RINKEBY_API_URL
+    },
+    goerli : {
+      url : GOERLI_API_URL
     }
   }
 
