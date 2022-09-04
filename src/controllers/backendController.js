@@ -1,5 +1,4 @@
-import axios from "axios";
-import {SIDECHAIN_UPLOAD_ENDPOINT, SIDECHAIN_FEED_ENDPOINT} from '../config.js'
+
 import {getAddressFromExternalURL} from '../helperFunctions'
 
 /**
@@ -36,7 +35,7 @@ export async function updateMetadataWithExternalURL(baseURI, contractAddress, au
  * @returns [{*}] list of sidechain objects
  */
 export async function getSidechains(sort, keyword, limit, offset){
-    return //TODO
+    return require("./testSidechains.json")
 }
 
 /**
@@ -55,3 +54,4 @@ export async function getDownloadedContent(account){
         }
     )
 }
+

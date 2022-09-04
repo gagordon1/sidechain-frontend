@@ -20,9 +20,6 @@ export async function deploySidechain(REV, creatorAddress, parents, baseURI){
     return ""
 }
 
-async function getMetadataEndpoint(contractAddress){
-    return "https://sidechain-backend.herokuapp.com/44204433-4f08-478d-95c8-e13435dbc4ce/0"
-}
 
 /**
  * Given a contract address, gets its metadata
@@ -30,9 +27,7 @@ async function getMetadataEndpoint(contractAddress){
  * @returns {*} object of the format Sidechain Metadata
  */
 export async function getMetadata(contractAddress){
-    const metadataEndpoint = await getMetadataEndpoint(contractAddress)
-    const metadata = await axios.get(metadataEndpoint)
-    return metadata.data
+    return require("./testMetadata.json")
 }
 
 

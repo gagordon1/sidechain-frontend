@@ -1,0 +1,110 @@
+[
+    {
+        "artwork": "https://sidechain-records.s3.amazonaws.com/7083bcaf-1f5d-414e-8538-d90a18dafcac/artwork",
+        "auth_token": "3a6ef8e1-176f-4cd0-be19-a92f0406a024",
+        "contract_status": "ok",
+        "description": "",
+        "external_url": "https://www.side-chain.xyz/artwork/0xf826624c788B36245D3b626C6A9fFc4C13A498A6",
+        "id": "7083bcaf-1f5d-414e-8538-d90a18dafcac",
+        "image": "https://sidechain-records.s3.amazonaws.com/7083bcaf-1f5d-414e-8538-d90a18dafcac/image",
+        "name": "Walking on a dream x Yes Indeed",
+        "project_files": "",
+        "timestamp_added": "1661215568.876507"
+    },
+    {
+        "artwork": "https://sidechain-records.s3.amazonaws.com/a5e2c8a8-a0c4-43dc-a7a3-15339e54b2c4/artwork",
+        "auth_token": "6aa8b832-6847-46e8-b9f9-4c737cd41571",
+        "contract_status": "ok",
+        "description": "",
+        "external_url": "https://www.side-chain.xyz/artwork/0xc4bdB9bFfE8E7fBE59E08b35aaec5BcaeC7356b6",
+        "id": "a5e2c8a8-a0c4-43dc-a7a3-15339e54b2c4",
+        "image": "https://sidechain-records.s3.amazonaws.com/a5e2c8a8-a0c4-43dc-a7a3-15339e54b2c4/image",
+        "name": "Yes Indeed",
+        "project_files": "https://sidechain-records.s3.amazonaws.com/a5e2c8a8-a0c4-43dc-a7a3-15339e54b2c4/project_files",
+        "timestamp_added": "1661215181.577255"
+    },
+    {
+        "artwork": "https://sidechain-records.s3.amazonaws.com/afe5bf2b-303e-4ec4-aa11-1520a5440f9f/artwork",
+        "auth_token": "5dab763d-e563-4fb9-b832-82f5c4f1c8fd",
+        "contract_status": "ok",
+        "description": "",
+        "external_url": "https://www.side-chain.xyz/artwork/0x36E19898281f96781dA684f8F2BeEf164576098e",
+        "id": "afe5bf2b-303e-4ec4-aa11-1520a5440f9f",
+        "image": "https://sidechain-records.s3.amazonaws.com/afe5bf2b-303e-4ec4-aa11-1520a5440f9f/image",
+        "name": "Walking on a Dream",
+        "project_files": "https://sidechain-records.s3.amazonaws.com/afe5bf2b-303e-4ec4-aa11-1520a5440f9f/project_files",
+        "timestamp_added": "1661215086.2461836"
+    },
+    {
+        "artwork": "https://sidechain-records.s3.amazonaws.com/0ab194e7-c9bf-4f2b-9ba0-b0bc18fba709/artwork",
+        "auth_token": "5be29251-a28a-4f78-b251-e61106877684",
+        "contract_status": "ok",
+        "description": "",
+        "external_url": "https://www.side-chain.xyz/artwork/0xbdaBD3893914B1AB80080e3A36EB714432e8674d",
+        "id": "0ab194e7-c9bf-4f2b-9ba0-b0bc18fba709",
+        "image": "https://sidechain-records.s3.amazonaws.com/0ab194e7-c9bf-4f2b-9ba0-b0bc18fba709/image",
+        "name": "Afraid to Feel",
+        "project_files": "",
+        "timestamp_added": "1661142697.994648"
+    },
+    {
+        "artwork": "https://sidechain-records.s3.amazonaws.com/24205b49-b258-4b67-9f5b-426a1af8fad1/artwork",
+        "auth_token": "f58c7c9d-bd4a-4e67-933c-3fefc023fdb0",
+        "contract_status": "ok",
+        "description": "",
+        "external_url": "https://www.side-chain.xyz/artwork/0x49B92DD0655858fAf8040ec1804582438f08EB0d",
+        "id": "24205b49-b258-4b67-9f5b-426a1af8fad1",
+        "image": "https://sidechain-records.s3.amazonaws.com/24205b49-b258-4b67-9f5b-426a1af8fad1/image",
+        "name": "",
+        "project_files": "https://sidechain-records.s3.amazonaws.com/24205b49-b258-4b67-9f5b-426a1af8fad1/project_files",
+        "timestamp_added": "1661142623.1000388"
+    },
+    {
+        "artwork": "https://sidechain-records.s3.amazonaws.com/ce94c129-9f2f-4a1b-a1fd-66b89aca3455/artwork",
+        "auth_token": "password",
+        "contract_status": "ok",
+        "description": "",
+        "external_url": "https://www.side-chain.xyz/artwork/0xAE7F91C039D3946fe405f7a4E9F9e834ce2B8E9A",
+        "id": "ce94c129-9f2f-4a1b-a1fd-66b89aca3455",
+        "image": "https://sidechain-records.s3.amazonaws.com/ce94c129-9f2f-4a1b-a1fd-66b89aca3455/image",
+        "name": "Otis - Kanye",
+        "project_files": "",
+        "timestamp_added": "1661138123.0166261"
+    },
+    {
+        "artwork": "https://sidechain-records.s3.amazonaws.com/52396fb7-8781-4a5d-866a-b36a62da18c6/artwork",
+        "auth_token": "password",
+        "contract_status": "ok",
+        "description": "",
+        "external_url": "https://www.side-chain.xyz/artwork/0xE85933D0c589278Bf58654962eDf7f6645E987b7",
+        "id": "52396fb7-8781-4a5d-866a-b36a62da18c6",
+        "image": "https://sidechain-records.s3.amazonaws.com/52396fb7-8781-4a5d-866a-b36a62da18c6/image",
+        "name": "Try a Little Tenderness",
+        "project_files": "https://sidechain-records.s3.amazonaws.com/52396fb7-8781-4a5d-866a-b36a62da18c6/project_files",
+        "timestamp_added": "1661138062.0790324"
+    },
+    {
+        "artwork": "https://sidechain-records.s3.amazonaws.com/44204433-4f08-478d-95c8-e13435dbc4ce/artwork",
+        "auth_token": "password",
+        "contract_status": "ok",
+        "description": "",
+        "external_url": "https://www.side-chain.xyz/artwork/0x78Eb12a6D47f7B47b42186e6CC3a46e166293dA2",
+        "id": "44204433-4f08-478d-95c8-e13435dbc4ce",
+        "image": "https://sidechain-records.s3.amazonaws.com/44204433-4f08-478d-95c8-e13435dbc4ce/image",
+        "name": "Tondo",
+        "project_files": "",
+        "timestamp_added": "1661125429.949425"
+    },
+    {
+        "artwork": "https://sidechain-records.s3.amazonaws.com/5ba94f9f-2305-4eaf-b29b-420fa0ccb8b2/artwork",
+        "auth_token": "password",
+        "contract_status": "ok",
+        "description": "",
+        "external_url": "https://www.side-chain.xyz/artwork/0x160048023155ca5CE1DBA443212940866f967ACD",
+        "id": "5ba94f9f-2305-4eaf-b29b-420fa0ccb8b2",
+        "image": "https://sidechain-records.s3.amazonaws.com/5ba94f9f-2305-4eaf-b29b-420fa0ccb8b2/image",
+        "name": "Tondoho Mba",
+        "project_files": "https://sidechain-records.s3.amazonaws.com/5ba94f9f-2305-4eaf-b29b-420fa0ccb8b2/project_files",
+        "timestamp_added": "1661125317.6737993"
+    }
+]
