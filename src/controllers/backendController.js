@@ -14,11 +14,7 @@ import {getAddressFromExternalURL} from '../helperFunctions'
  * @returns str : {link to metadata}%{authToken}
  */
 export async function uploadMetadata(formData){
-    const config = {     
-        headers: { 'content-type': 'multipart/form-data' }
-    }
-    const response = await axios.post(SIDECHAIN_UPLOAD_ENDPOINT, formData, config)
-    return response.data
+    return ""
 
 }
 
@@ -28,10 +24,7 @@ export async function uploadMetadata(formData){
  * @param str contractAddress 
  */
 export async function updateMetadataWithExternalURL(baseURI, contractAddress, authToken){
-    const config = {     
-        headers: { 'content-type': 'text/plain' }
-    }
-    return await axios.post(baseURI,contractAddress + "%" + authToken, config)
+    
 }
 
 /**
@@ -43,15 +36,7 @@ export async function updateMetadataWithExternalURL(baseURI, contractAddress, au
  * @returns [{*}] list of sidechain objects
  */
 export async function getSidechains(sort, keyword, limit, offset){
-    const response = await axios.get(SIDECHAIN_FEED_ENDPOINT,{
-        params :{
-            sort  : sort,
-            keyword : keyword,
-            limit : limit,
-            offset : offset
-        }
-    } )
-    return response.data.items
+    return //TODO
 }
 
 /**

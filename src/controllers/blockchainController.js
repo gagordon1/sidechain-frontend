@@ -17,22 +17,11 @@ export const getProvider = () =>{
  * 
  */
 export async function deploySidechain(REV, creatorAddress, parents, baseURI){
-    var json = require('../SidechainERC721.json'); 
-    const abi = json["abi"]
-    const byteCode = json["bytecode"]
-    const signer = new ethers.providers.Web3Provider(getProvider()).getSigner()
-    const factory = new ethers.ContractFactory(abi, byteCode, signer)
-    const contract = await factory.deploy(creatorAddress, parents, REV, baseURI)
-    await contract.deployed()
-    return contract.address
+    return ""
 }
 
 async function getMetadataEndpoint(contractAddress){
-    var json = require('../SidechainERC721.json'); 
-    const abi = json["abi"]
-    const wrappedProvider = new ethers.providers.Web3Provider(getProvider())
-    let contract = new ethers.Contract(contractAddress, abi, wrappedProvider);
-    return await contract.tokenURI(0) //metadata for each token is identical
+    return "https://sidechain-backend.herokuapp.com/44204433-4f08-478d-95c8-e13435dbc4ce/0"
 }
 
 /**
@@ -57,17 +46,10 @@ export async function getMetadata(contractAddress){
  * }
  */
 export async function getOnChainData(contractAddress){
-    var json = require('../SidechainERC721.json'); 
-    const abi = json["abi"]
-    const wrappedProvider = new ethers.providers.Web3Provider(getProvider())
-    let contract = new ethers.Contract(contractAddress, abi, wrappedProvider);
-    const rev = await contract.getREV()
-    const parents = await contract.getParents()
-    const creator = await contract.getCreator()
     return {
-        rev : rev,
-        parents : parents,
-        creator : creator
+        rev : 20,
+        parents : [],
+        creator : "0x6293r8612350r87123ta7rt237"
     }
 }
 
