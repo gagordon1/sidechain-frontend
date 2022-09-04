@@ -29,3 +29,16 @@ A number of measures will have to be taken at the point of upload to let Sidecha
 ## Installation
 
 Currently requires Metamask connected to the rinkeby network to access project files, and test Rinkeby ETH (you can get it through a [faucet](https://rinkebyfaucet.com/)) to deploy a contract.
+
+For testing / design:  
+Switch to "design" branch
+
+git checkout design
+
+Install dependencies:
+
+npm install
+
+Run Development Server:
+
+npm run dev
